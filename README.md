@@ -82,6 +82,31 @@ The most-used generated paths can graduate to **curated overlays** shipped in th
 (`tracks/<lang>/overlays/<name>.md`, e.g. FastAPI on Python) — shared and linted. See
 `tracks/OVERLAYS.md`. This is the "personal → community" promotion path.
 
+## Contributing
+Étude grows by **curriculum** (a full language/tech track) or by **overlay**
+(a framework/library on top of a parent track, e.g. FastAPI on Python). Both go
+through the same loop: open an issue first to discuss scope, then a PR.
+
+**A new curriculum** (`tracks/<lang>/curriculum.md`):
+- Read an existing track (e.g. `tracks/python/curriculum.md`) — same frontmatter,
+  same module shape (`mNN`, `concepts`, `prerequisites`, `mastery`, `exercise_seeds`,
+  `resources`).
+- Lint locally: `uv run --script tools/lint_curriculum.py tracks/<lang>/curriculum.md`.
+- Keep `transverse` concepts truly transverse (they must apply across languages).
+
+**A new overlay** (`tracks/<parent>/overlays/<name>.md`):
+- Schema and rules: `tracks/OVERLAYS.md`.
+- Lint locally: `uv run --script tools/lint_overlay.py tracks/<parent>/overlays/<name>.md`.
+- Namespace every concept `<name>:`. No `transverse` block (frameworks don't claim
+  cross-track transfer). Prereqs are either `parent:<concept>` (declared in
+  `requires_parent`) or an **earlier** `oNN` module in the same file.
+- If a learner already has the topic as a `personal:` extension in their
+  `progress/<track>/extensions.md`, follow the promotion path in `OVERLAYS.md`.
+
+Resources must be official docs (project site, language reference). Étude pulls
+current usage via Context7 at teach-time — don't pin minor versions in
+`target_version` unless the API genuinely diverges.
+
 ## Requirements
 - Claude Code, with Context7 available (for current library docs).
 - `python3` (for the integrity hook — stdlib only, no install).
