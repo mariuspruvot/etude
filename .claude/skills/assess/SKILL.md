@@ -21,11 +21,15 @@ Goal: figure out where the learner should start, cheaply, by conversation — ne
 Also read `progress/<track>/extensions.md` if present — the learner's promoted personal
 modules are first-class: include them in the proposed path alongside curated modules.
 
+Curated overlays live in `tracks/<track>/overlays/*.md` — if present for the active track, read them too: their modules (`oNN`, concepts namespaced `<overlay>:`) are first-class once their `parent:` prerequisites are met.
+
 3. **Syntax never transfers**: always include the track's syntax module (e.g. `go-syntax`,
    `python-syntax`) unless `skills.md` shows it `proficient` (i.e. they used THIS language before).
 
 Only curated transverse concepts drive cross-track skipping; `personal:` concepts are
 track-local and never skip another track's modules.
+
+Overlay concepts (namespaced `<overlay>:`) are shared but parent-track-local — treat them like `personal:` for transfer: never transverse, never satisfying another track's skip logic.
 
 4. Pick the entry module: the earliest module whose prerequisites are satisfied and whose
    concepts are not all known. Explain the proposed path in 3–5 bullets, and offer to start.
