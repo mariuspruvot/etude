@@ -12,8 +12,8 @@ from pathlib import Path
 
 import yaml
 
-_FRONTMATTER = re.compile(r"\A---\n(.*?)\n---\n", re.DOTALL)
-_CONCEPTS_LINE = re.compile(r"concepts:\s*\[([^\]]*)\]")
+_FRONTMATTER = re.compile(r"\A---\n(.*?)\n---(?:\n|\Z)", re.DOTALL)
+_CONCEPTS_LINE = re.compile(r"(?<!\w)concepts:\s*\[([^\]]*)\]")
 REQUIRED_TOP = ("language", "display_name", "target_version")
 
 
@@ -44,7 +44,9 @@ def lint_text(text: str) -> list[str]:
     for raw in _CONCEPTS_LINE.findall(body):
         for tag in (t.strip() for t in raw.split(",") if t.strip()):
             if tag not in declared:
-                errors.append(f"module references undeclared concept: {tag}")
+                msg = f"module references undeclared concept: {tag}"
+                if msg not in errors:
+                    errors.append(msg)
     return errors
 
 
