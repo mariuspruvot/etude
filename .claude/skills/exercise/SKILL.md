@@ -17,6 +17,14 @@ teach/generate from them exactly as from curated modules.
 
 1. Pick an `exercise_seed` from the current module (or generate one at the right difficulty
    given `progress/skills.md`). Calibrate: harder if the learner is senior/transferring.
+
+Vary the exercise FORMAT to keep practice fresh — choose the one that best fits the concept:
+`implement` · `debug` (give broken code in prompt.md, learner fixes it) · `refactor` ·
+`read-and-explain` · `extend` (add a feature to working code in prompt.md) · `write-tests`.
+Check recent entries in `progress/<track>/log.md` and avoid repeating the last format/topic.
+For debug/extend/refactor, the starter (broken/partial code) goes in `prompt.md`; the
+learner still writes their answer in their own `solution_file`.
+
 2. Create `progress/<track>/exercises/NNN-<slug>/` (NNN = zero-padded 3-digit index; compute
    it by globbing existing `progress/<track>/exercises/` folders, taking the max NNN prefix + 1
    — start at `001`).
