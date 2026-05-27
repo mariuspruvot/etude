@@ -36,3 +36,5 @@ track-local and never skip another track's modules.
    to `progress/<track>/log.md`.
 
 Do NOT teach or generate exercises here — hand off to `teach` or `exercise`.
+
+**Language:** once the learner's `language` is detected/set (step 1), write prose in it; keep code, identifiers, CLI, and concept tags in English.
