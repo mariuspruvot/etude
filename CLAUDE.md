@@ -22,6 +22,8 @@ Map the learner's intent to a skill (slash commands also exist):
 - "interview me / mock interview" → `interview`
 - "revise / review" → `revise`
 - "test me / validate / exam" → `validate`
+- "continue / resume / where did I leave off" → resume at the current module (`teach` or
+  `exercise`, whichever fits the position recorded in `progress/`)
 
 ## Hard rules
 - NEVER write the learner's solution files. A hook enforces this under
