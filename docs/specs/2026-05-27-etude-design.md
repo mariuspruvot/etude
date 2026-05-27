@@ -52,18 +52,18 @@ the technical interview."*
 | 8 | v1 scope | All 4 modes (course, exercise, mini-app, interview); Go + Python as full flagships; JS + SQL as stubs |
 | 9 | Name | **Étude** (musical étude = progressively harder practice pieces, repeated to master) |
 
-## 4. Two Entry Doors
+## 4. Entry Door
 
-Étude supports two ways in, both backed by the same engine:
+v1 has a single entry door, backed by the engine:
 
 1. **Path** (broad): *"I want to learn Go"* → full curriculum, skipping concepts already
    mastered (detected via transverse competency tags — prior Python knowledge counts).
-2. **Targeted drill** (narrow): *"I'm struggling with goroutines"* / *"drill my weak
-   spots"* → Claude jumps straight to a concept (or picks low-scoring concepts from
-   `skills.md`) and generates focused exercises, without replaying the whole path.
 
-The targeted drill is an additional entry path inside the `assess`/`exercise` skills, not
-a separate mode to build.
+**Roadmap — targeted drill** (narrow): *"I'm struggling with goroutines"* / *"drill my
+weak spots"* → Claude jumps straight to a concept (or picks low-scoring concepts from
+`skills.md`) and generates focused exercises, without replaying the whole path. Deferred
+to keep v1 focused; it is an additional entry path inside `assess`/`exercise`, not a new
+mode, so it slots in cheaply later.
 
 ## 5. Repo / Personal Split (architecture keystone)
 
@@ -133,12 +133,15 @@ never appears in `git status`, is never committed, and never conflicts on `git p
   `feedback.md`; update `skills.md` (level + evidence) and `log.md`.
 - **hint** — graduated hints (orientation → lead → pseudo-code), never the full solution.
 - **mini-app** — guided multi-file project mode.
-- **interview** — mock technical interview mode.
+- **interview** — mock technical interview mode. Includes a **live-coding segment**: the
+  candidate writes code under interview conditions, which the `grader` agent executes and
+  scores (correctness + reasoning), in addition to verbal Q&A.
 - **status** — render a progress dashboard from `progress/`.
 
 ### Agents (subagents)
 - **grader** — runs tests / executes code in isolation, returns structured evaluation.
-- **interviewer** — conducts the mock interview as a focused persona.
+- **interviewer** — conducts the mock interview as a focused persona; for the live-coding
+  segment it hands the candidate's code to the `grader` agent for execution and scoring.
 
 ### Hooks
 - **protect-solutions** (PreToolUse) — blocks Write/Edit on user solution files (e.g.
@@ -192,6 +195,7 @@ Natural language always works in parallel via the root `CLAUDE.md` router.
 - On-the-fly skeleton bootstrap for unknown languages (experimental).
 
 ### Roadmap (post-v1)
+- **Targeted drill** entry door (concept-first / weak-spots-first practice).
 - More community-contributed languages.
 - Spaced repetition over weak concepts.
 - Progress export/sharing (e.g. `git init` inside `progress/` to push to a private repo).
@@ -223,9 +227,13 @@ This is primarily a prompt/content repo, so "tests" are mostly behavioral:
   "engine, not content" model; the flagship walkthroughs are how we validate it.
 - *Name "Étude" is available on GitHub* — not yet checked. `[claude-guessed]`
 
-## 13. Open Questions
+## 13. Resolved & Open Questions
 
+Resolved during brainstorming:
+- Mock interviews → **verbal Q&A + a live-coding segment** graded by the `grader` agent.
+- Targeted drill → **roadmap**, not v1 (single "path" entry door at launch).
+
+Open:
 - Should `progress/` optionally support `git init` inside it for multi-machine persistence
   in v1, or is that strictly roadmap?
-- For mock interviews: text-only Q&A, or also a live coding segment graded by the `grader`?
 - How much of the flagship `curriculum.md` is hand-written vs generated-then-reviewed?
