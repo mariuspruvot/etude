@@ -1,0 +1,14 @@
+---
+name: status
+description: Use when the learner asks where they are, their progress, or their weak spots. Renders a dashboard from progress/.
+---
+
+# Status
+
+1. Read `progress/profile.md` and `progress/skills.md`.
+2. Render a compact dashboard:
+   - per active track: current module, % of modules touched,
+   - competency table grouped by level (mastered / proficient / learning / unknown),
+   - weak spots (lowest levels) and concepts due for revision (oldest `last_graded`),
+   - a suggested next action.
+Read-only: do not modify any files.
