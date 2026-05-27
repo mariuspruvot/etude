@@ -16,7 +16,7 @@ Your progress lives in `progress/` (gitignored, local-only, the source of truth)
 up by copying that folder.
 
 ## Modes
-`/learn` · `/next` · `/hint` · `/grade` · `/status` · `/mini-app` · `/interview` · `/revise` · `/validate`
+`/learn` · `/next` · `/hint` · `/grade` · `/status` · `/mini-app` · `/interview` · `/revise` · `/validate` · `/deep-dive` · `/language`
 
 ## Integrity
 Claude is a tutor, not a solver: a hook blocks it from writing your solution files, and
@@ -26,6 +26,17 @@ hints are graduated. You write the code; Claude guides and grades.
 Go and Python are full flagship tracks; JavaScript and SQL are stubs. A track is a
 programming language or an adjacent technical subject. Adding one = writing a
 `tracks/<track>/curriculum.md` skeleton — contributions welcome.
+
+## Teaching language
+Étude teaches in your preferred language — say it (or run `/language fr`) and explanations,
+exercises, and feedback switch. Code, identifiers, and CLI commands stay in their original
+(usually English) form.
+
+## How coverage works (you're not limited to the modules)
+Curated curricula cover each language's stable **core**. Everything else — frameworks
+(FastAPI, Django, React, Vue), libraries, niche topics — is **generated on demand** using
+current docs (Context7) when you ask, and remembered in your `progress/` as personal
+modules. Ask for anything: `/deep-dive "Go escape analysis"`, "teach me FastAPI", etc.
 
 ## Requirements
 - Claude Code, with Context7 available (for current library docs).
