@@ -253,10 +253,12 @@ This is primarily a prompt/content repo, so "tests" are mostly behavioral:
 Resolved during brainstorming:
 - Mock interviews → **verbal Q&A + a live-coding segment** graded by the `grader` agent.
 - Targeted drill → **roadmap**, not v1 (single "path" entry door at launch).
+- `git init` inside `progress/` for multi-machine persistence → **roadmap**, not v1.
+- Engine unit → **track** (prog language or adjacent tech subject); v1 positioning stays
+  programming/tech, architecture stays subject-agnostic.
+- Revise + validate modes → **v1** (6 modes total).
 
 Open:
-- Should `progress/` optionally support `git init` inside it for multi-machine persistence
-  in v1, or is that strictly roadmap?
 - How much of the flagship `curriculum.md` is hand-written vs generated-then-reviewed?
 
 ## Appendix A — `curriculum.md` reference example
