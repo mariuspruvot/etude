@@ -47,14 +47,15 @@ def test_valid_curriculum_has_no_errors() -> None:
 
 
 def test_missing_frontmatter_key_reported() -> None:
-    text = VALID.replace("target_version: \"1.23\"\n", "")
+    text = VALID.replace('target_version: "1.23"\n', "")
     errors = lint_text(text)
     assert any("target_version" in e for e in errors)
 
 
 def test_undeclared_concept_reported() -> None:
-    text = VALID.replace("- concepts: [concurrency, goroutines]",
-                         "- concepts: [concurency]")  # typo
+    text = VALID.replace(
+        "- concepts: [concurrency, goroutines]", "- concepts: [concurency]"
+    )  # typo
     errors = lint_text(text)
     assert any("concurency" in e for e in errors)
 

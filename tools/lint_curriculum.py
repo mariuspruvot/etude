@@ -42,14 +42,16 @@ def lint_text(text: str) -> list[str]:
 
     concepts = fm.get("concepts", {})
     transverse = concepts.get("transverse", []) if isinstance(concepts, dict) else []
-    specific = concepts.get("language_specific", []) if isinstance(concepts, dict) else []
+    specific = (
+        concepts.get("language_specific", []) if isinstance(concepts, dict) else []
+    )
     if not isinstance(transverse, list) or not transverse:
         errors.append("concepts.transverse must be a non-empty list")
     if not isinstance(specific, list):
         errors.append("concepts.language_specific must be a list")
     declared = set(transverse or []) | set(specific or [])
 
-    body = text[m.end():]
+    body = text[m.end() :]
     for tag in _concept_tags(body):
         if tag not in declared:
             msg = f"module references undeclared concept: {tag}"

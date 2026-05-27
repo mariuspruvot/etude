@@ -24,23 +24,35 @@ def _run(payload: Any) -> subprocess.CompletedProcess[str]:
 
 
 def test_blocks_solution_file_in_exercise_dir() -> None:
-    assert is_protected("Write", "/x/progress/go/exercises/001-slices/solution.go") is True
+    assert (
+        is_protected("Write", "/x/progress/go/exercises/001-slices/solution.go") is True
+    )
 
 
 def test_blocks_any_extension_solution() -> None:
-    assert is_protected("Edit", "/x/progress/python/exercises/004-async/main.py") is True
+    assert (
+        is_protected("Edit", "/x/progress/python/exercises/004-async/main.py") is True
+    )
 
 
 def test_blocks_notebook_solution() -> None:
-    assert is_protected("NotebookEdit", "/x/progress/go/exercises/001/solution.ipynb") is True
+    assert (
+        is_protected("NotebookEdit", "/x/progress/go/exercises/001/solution.ipynb")
+        is True
+    )
 
 
 def test_allows_prompt_md() -> None:
-    assert is_protected("Write", "/x/progress/go/exercises/001-slices/prompt.md") is False
+    assert (
+        is_protected("Write", "/x/progress/go/exercises/001-slices/prompt.md") is False
+    )
 
 
 def test_allows_feedback_md() -> None:
-    assert is_protected("Write", "/x/progress/go/exercises/001-slices/feedback.md") is False
+    assert (
+        is_protected("Write", "/x/progress/go/exercises/001-slices/feedback.md")
+        is False
+    )
 
 
 def test_allows_tracking_files_outside_exercises() -> None:
@@ -58,22 +70,36 @@ def test_ignores_files_outside_progress() -> None:
 
 
 def test_cli_blocks_with_exit_2() -> None:
-    r = _run({"tool_name": "Write",
-              "tool_input": {"file_path": "/x/progress/go/exercises/001/solution.go"}})
+    r = _run(
+        {
+            "tool_name": "Write",
+            "tool_input": {"file_path": "/x/progress/go/exercises/001/solution.go"},
+        }
+    )
     assert r.returncode == 2
     assert "integrity guard" in r.stderr
 
 
 def test_cli_blocks_notebook_with_exit_2() -> None:
-    r = _run({"tool_name": "NotebookEdit",
-              "tool_input": {"notebook_path": "/x/progress/go/exercises/001/solution.ipynb"}})
+    r = _run(
+        {
+            "tool_name": "NotebookEdit",
+            "tool_input": {
+                "notebook_path": "/x/progress/go/exercises/001/solution.ipynb"
+            },
+        }
+    )
     assert r.returncode == 2
     assert "integrity guard" in r.stderr
 
 
 def test_cli_allows_feedback() -> None:
-    r = _run({"tool_name": "Write",
-              "tool_input": {"file_path": "/x/progress/go/exercises/001/feedback.md"}})
+    r = _run(
+        {
+            "tool_name": "Write",
+            "tool_input": {"file_path": "/x/progress/go/exercises/001/feedback.md"},
+        }
+    )
     assert r.returncode == 0
 
 
