@@ -61,6 +61,10 @@ concept column and are **track-local** (not counted as transverse transfer).
 - Discussed GMP model, work-stealing. Not a graded module. Follow-up: maybe promote.
 ```
 
+> Revision: `revise` treats the latest dated entry for a topic as its `last_visited` and
+> resurfaces a topic not revisited in > 30 days as an optional light recall. A `learning`
+> concept in `skills.md` with `last_graded: —` (deep-dive nudge) is always due. No new field.
+
 ## Template: `<track>/extensions.md`
 ```markdown
 # Personal modules — promoted from repeated exploration (NOT shared/linted)
