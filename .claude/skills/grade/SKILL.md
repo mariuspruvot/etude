@@ -29,6 +29,8 @@ in `prompt.md`; record the result under a `personal:`-prefixed concept in `skill
 Personal concepts use a `personal:` prefix and are track-local — never mark them as
 transverse, and never let them satisfy another track's transverse skip logic.
 
+Overlay concepts (namespaced `<overlay>:`) are shared but parent-track-local — treat them like `personal:` for transfer: never transverse, never satisfying another track's skip logic.
+
 5. Append a dated entry to `progress/<track>/log.md`. Offer the next step (next module,
    another exercise, or `revise`).
 
