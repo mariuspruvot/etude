@@ -71,17 +71,23 @@ def test_requires_parent_must_exist_in_parent() -> None:
         "requires_parent: [async-await, nonexistent]",
     )
     errors = lint_overlay_text(text, PARENT_CONCEPTS)
-    assert any("requires_parent concept not in parent track: nonexistent" in e for e in errors)
+    assert any(
+        "requires_parent concept not in parent track: nonexistent" in e for e in errors
+    )
 
 
 def test_module_concept_must_be_declared() -> None:
     text = VALID.replace("- concepts: [fastapi:routing]", "- concepts: [fastapi:typo]")
     errors = lint_overlay_text(text, PARENT_CONCEPTS)
-    assert any("o01 references undeclared overlay concept: fastapi:typo" in e for e in errors)
+    assert any(
+        "o01 references undeclared overlay concept: fastapi:typo" in e for e in errors
+    )
 
 
 def test_module_prereq_must_be_earlier_module_or_parent() -> None:
-    text = VALID.replace("- prerequisites: [parent:async-await]", "- prerequisites: [o02]")
+    text = VALID.replace(
+        "- prerequisites: [parent:async-await]", "- prerequisites: [o02]"
+    )
     errors = lint_overlay_text(text, PARENT_CONCEPTS)
     assert any(
         "o01 prerequisite not a parent: concept or an earlier module: o02" in e
@@ -90,6 +96,10 @@ def test_module_prereq_must_be_earlier_module_or_parent() -> None:
 
 
 def test_parent_prereq_must_be_in_requires_parent() -> None:
-    text = VALID.replace("- prerequisites: [parent:async-await]", "- prerequisites: [parent:testing]")
+    text = VALID.replace(
+        "- prerequisites: [parent:async-await]", "- prerequisites: [parent:testing]"
+    )
     errors = lint_overlay_text(text, PARENT_CONCEPTS)
-    assert any("o01 parent prerequisite not in requires_parent: testing" in e for e in errors)
+    assert any(
+        "o01 parent prerequisite not in requires_parent: testing" in e for e in errors
+    )
