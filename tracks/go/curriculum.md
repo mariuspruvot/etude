@@ -106,6 +106,8 @@ concepts:
     - wraps with %w and inspects with errors.Is / errors.As
 - exercise_seeds:
     - "build a parser that wraps low-level errors with context and is testable with errors.Is"
+    - "debug: a function swallows errors with `_ =` — fix it to wrap and propagate with %w"
+    - "read-and-explain: why does this errors.Is check fail across a fmt.Errorf boundary?"
 
 ### m05 — Interfaces & polymorphism
 - id: m05
@@ -139,6 +141,8 @@ concepts:
     - code passes `go test -race`
 - exercise_seeds:
     - "build a bounded worker pool with graceful shutdown via context"
+    - "debug: a goroutine leaks because its channel is never closed — find and fix the leak"
+    - "refactor: replace a shared-counter mutex with a channel-based worker pool"
 - transfer_note: |
     If concurrency is mastered (e.g. Python asyncio, JS event loop), skip the conceptual
     intro and contrast models directly: CSP/channels vs async-await, the race detector,

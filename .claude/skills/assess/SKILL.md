@@ -11,12 +11,22 @@ Goal: figure out where the learner should start, cheaply, by conversation — ne
    Ask 2–3 questions max: which languages they've shipped real code in, their goal, preferred pace.
    Record the track being learned as an `active_track: <track>` field in the profile frontmatter
    (create or update it).
+- Set `language` in `progress/profile.md`: detect the language the learner is writing in;
+  if ambiguous, ask once ("In which language should I teach — keeping code in English?").
 2. Read `tracks/<track>/curriculum.md`. For each **transverse** concept, check
    `progress/skills.md`. A concept is considered known if level is `proficient`+ OR the
    learner reports real experience with it in another language (record that as evidence:
    `<other-lang> (prior)`).
+
+Also read `progress/<track>/extensions.md` if present — the learner's promoted personal
+modules are first-class: include them in the proposed path alongside curated modules.
+
 3. **Syntax never transfers**: always include the track's syntax module (e.g. `go-syntax`,
    `python-syntax`) unless `skills.md` shows it `proficient` (i.e. they used THIS language before).
+
+Only curated transverse concepts drive cross-track skipping; `personal:` concepts are
+track-local and never skip another track's modules.
+
 4. Pick the entry module: the earliest module whose prerequisites are satisfied and whose
    concepts are not all known. Explain the proposed path in 3–5 bullets, and offer to start.
 5. Write/update `progress/skills.md`. Set the level by reported depth: `learning` by default;

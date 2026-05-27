@@ -11,6 +11,11 @@ Determine the active track from what the learner just said, else from `progress/
 1. Locate the exercise folder, then read its `prompt.md` frontmatter `solution_file` to find
    the learner's solution file (do not guess or glob for it). If that solution file does not
    exist yet, tell them to write one (you cannot — the hook blocks solution writes).
+
+For an off-curriculum exercise (no curated module), grade against the acceptance criteria
+in `prompt.md`; record the result under a `personal:`-prefixed concept in `skills.md`
+(track-local), not a curated concept.
+
 2. Dispatch the `grader` agent, passing the exercise folder path (the current exercise — the
    most recent folder in `progress/<track>/exercises/`; if ambiguous, ask the learner which
    one). Execution happens when relevant; otherwise qualitative review (decision: "execution
@@ -20,5 +25,11 @@ Determine the active track from what the learner just said, else from `progress/
 4. Update `progress/skills.md`: for each concept, set the new level per the grader's
    verdict and set `last_graded` to today (ISO date), with the exercise path as evidence.
    Never downgrade a `mastered` concept on a single weak exercise without a note.
+
+Personal concepts use a `personal:` prefix and are track-local — never mark them as
+transverse, and never let them satisfy another track's transverse skip logic.
+
 5. Append a dated entry to `progress/<track>/log.md`. Offer the next step (next module,
    another exercise, or `revise`).
+
+**Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.

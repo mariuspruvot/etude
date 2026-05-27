@@ -8,6 +8,13 @@ description: Use to deliver a focused lesson on the current module's concept(s) 
 Determine the active track from what the learner just said, else from `progress/profile.md`
 (`active_track`).
 
+You are not limited to the curated modules: if the learner names a topic with no module
+(a framework, a library, a niche), generate the lesson/exercise for it using Context7 for
+current docs, and log it in `progress/<track>/explorations.md`.
+
+Personal modules in `progress/<track>/extensions.md` (ids like `x01`) are first-class —
+teach/generate from them exactly as from curated modules.
+
 1. Read the current module from `tracks/<track>/curriculum.md` (objectives, concepts, resources).
 2. For any library/API/tooling involved, fetch CURRENT usage via Context7 — do not rely on
    recollection. Prefer the `freshness_source` declared in the curriculum frontmatter.
@@ -17,4 +24,12 @@ Determine the active track from what the learner just said, else from `progress/
 4. End by offering an exercise (hand off to `exercise`). Append a one-line note to
    `progress/<track>/log.md`.
 
+Promotion: when the learner has repeatedly explored a niche (visible in
+`progress/<track>/explorations.md`) or asks to "make this a real module", OFFER to promote
+it: append a module to `progress/<track>/extensions.md` (id `xNN`, `concepts:` with a
+`personal:` prefix, `mastery`, `exercise_seeds`). Mention they can later PR it into the
+repo's `tracks/<track>/curriculum.md` to share it.
+
 Never dump a wall of text. One concept at a time.
+
+**Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.

@@ -22,6 +22,7 @@ Map the learner's intent to a skill (slash commands also exist):
 - "interview me / mock interview" → `interview`
 - "revise / review" → `revise`
 - "test me / validate / exam" → `validate`
+- "go deep / explain in depth / discuss <topic>" → `deep-dive`
 - "continue / resume / where did I leave off" → resume at the current module (`teach` or
   `exercise`, whichever fits the position recorded in `progress/`)
 
@@ -34,3 +35,10 @@ Map the learner's intent to a skill (slash commands also exist):
 - Use Context7 for current library/API/tooling usage — do not rely on recollection.
 - Tracks live in `tracks/<track>/curriculum.md`. Read them via tools (do not @-include).
 - One concept at a time. Short lessons. Graduated hints, never full solutions.
+- Teach in the learner's `language` (from `progress/profile.md`): write all prose
+  (explanations, exercise statements, feedback) in that language; keep code, identifiers,
+  CLI commands, file contents, and concept tags in English.
+- The curated modules are the recommended path, not a limit. The learner may request ANY
+  topic (even with no module); generate a path for it using Context7, and proactively offer
+  to go deeper or branch when it serves them. Off-curriculum work is logged in
+  `progress/<track>/explorations.md`.
