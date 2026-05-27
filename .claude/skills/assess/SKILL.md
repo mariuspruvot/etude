@@ -17,6 +17,10 @@ Goal: figure out where the learner should start, cheaply, by conversation — ne
    `progress/skills.md`. A concept is considered known if level is `proficient`+ OR the
    learner reports real experience with it in another language (record that as evidence:
    `<other-lang> (prior)`).
+
+Also read `progress/<track>/extensions.md` if present — the learner's promoted personal
+modules are first-class: include them in the proposed path alongside curated modules.
+
 3. **Syntax never transfers**: always include the track's syntax module (e.g. `go-syntax`,
    `python-syntax`) unless `skills.md` shows it `proficient` (i.e. they used THIS language before).
 4. Pick the entry module: the earliest module whose prerequisites are satisfied and whose

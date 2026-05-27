@@ -12,6 +12,9 @@ You are not limited to the curated modules: if the learner names a topic with no
 (a framework, a library, a niche), generate the lesson/exercise for it using Context7 for
 current docs, and log it in `progress/<track>/explorations.md`.
 
+Personal modules in `progress/<track>/extensions.md` (ids like `x01`) are first-class —
+teach/generate from them exactly as from curated modules.
+
 1. Pick an `exercise_seed` from the current module (or generate one at the right difficulty
    given `progress/skills.md`). Calibrate: harder if the learner is senior/transferring.
 2. Create `progress/<track>/exercises/NNN-<slug>/` (NNN = zero-padded 3-digit index; compute

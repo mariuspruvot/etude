@@ -12,6 +12,9 @@ You are not limited to the curated modules: if the learner names a topic with no
 (a framework, a library, a niche), generate the lesson/exercise for it using Context7 for
 current docs, and log it in `progress/<track>/explorations.md`.
 
+Personal modules in `progress/<track>/extensions.md` (ids like `x01`) are first-class —
+teach/generate from them exactly as from curated modules.
+
 1. Read the current module from `tracks/<track>/curriculum.md` (objectives, concepts, resources).
 2. For any library/API/tooling involved, fetch CURRENT usage via Context7 — do not rely on
    recollection. Prefer the `freshness_source` declared in the curriculum frontmatter.
