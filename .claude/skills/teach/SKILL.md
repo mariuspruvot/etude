@@ -15,6 +15,8 @@ current docs, and log it in `progress/<track>/explorations.md`.
 Personal modules in `progress/<track>/extensions.md` (ids like `x01`) are first-class —
 teach/generate from them exactly as from curated modules.
 
+Curated overlays live in `tracks/<track>/overlays/*.md` — if present for the active track, read them too: their modules (`oNN`, concepts namespaced `<overlay>:`) are first-class once their `parent:` prerequisites are met.
+
 1. Read the current module from `tracks/<track>/curriculum.md` (objectives, concepts, resources).
 2. For any library/API/tooling involved, fetch CURRENT usage via Context7 — do not rely on
    recollection. Prefer the `freshness_source` declared in the curriculum frontmatter.
@@ -29,7 +31,9 @@ Promotion: OFFER to promote a niche to a personal module when the SAME niche app
 free-text dated entries), OR whenever the learner asks to "make this a real module". Never
 impose it. To promote, append a module to `progress/<track>/extensions.md` (id `xNN`,
 `concepts:` with a `personal:` prefix, `mastery`, `exercise_seeds`). Mention they can later
-PR it into the repo's `tracks/<track>/curriculum.md` to share it.
+PR it to share it — as a curated overlay (`tracks/<track>/overlays/<name>.md`, see
+`tracks/OVERLAYS.md`) for a framework/library, or into `curriculum.md` for a true
+core-language gap.
 
 Never dump a wall of text. One concept at a time.
 

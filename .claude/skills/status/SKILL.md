@@ -13,6 +13,7 @@ Determine the active track from what the learner just said, else from `progress/
    - per active track: current module, % of modules touched,
    - competency table grouped by level (mastered / proficient / learning / unknown),
    - personal modules (from `extensions.md`) and recent explorations (from `explorations.md`),
+   - curated overlays (from `tracks/<track>/overlays/*.md`) the active track has, if any,
    - weak spots (lowest levels) and concepts due for revision (oldest `last_graded`),
    - a suggested next action.
 Read-only: do not modify any files.

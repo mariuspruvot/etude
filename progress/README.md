@@ -77,3 +77,7 @@ concept column and are **track-local** (not counted as transverse transfer).
 - exercise_seeds:
     - "trace why a CPU-bound goroutine starves others without runtime.Gosched"
 ```
+
+> Promotion: a personal extension module that proves valuable can graduate to a **shared
+> curated overlay** under `tracks/<parent>/overlays/<name>.md` (ids `xNN`→`oNN`, concepts
+> `personal:foo`→`<name>:foo`, then linted by `tools/lint_overlay.py`). See `tracks/OVERLAYS.md`.

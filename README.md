@@ -38,6 +38,10 @@ Curated curricula cover each language's stable **core**. Everything else — fra
 current docs (Context7) when you ask, and remembered in your `progress/` as personal
 modules. Ask for anything: `/deep-dive "Go escape analysis"`, "teach me FastAPI", etc.
 
+The most-used generated paths can graduate to **curated overlays** shipped in the repo
+(`tracks/<lang>/overlays/<name>.md`, e.g. FastAPI on Python) — shared and linted. See
+`tracks/OVERLAYS.md`. This is the "personal → community" promotion path.
+
 ## Requirements
 - Claude Code, with Context7 available (for current library docs).
 - `python3` (for the integrity hook — stdlib only, no install).

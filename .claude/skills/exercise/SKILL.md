@@ -15,6 +15,8 @@ current docs, and log it in `progress/<track>/explorations.md`.
 Personal modules in `progress/<track>/extensions.md` (ids like `x01`) are first-class —
 teach/generate from them exactly as from curated modules.
 
+Curated overlays live in `tracks/<track>/overlays/*.md` — if present for the active track, read them too: their modules (`oNN`, concepts namespaced `<overlay>:`) are first-class once their `parent:` prerequisites are met.
+
 1. Pick an `exercise_seed` from the current module (or generate one at the right difficulty
    given `progress/skills.md`). Calibrate: harder if the learner is senior/transferring.
 
