@@ -25,6 +25,10 @@ in `prompt.md`; record the result under a `personal:`-prefixed concept in `skill
 4. Update `progress/skills.md`: for each concept, set the new level per the grader's
    verdict and set `last_graded` to today (ISO date), with the exercise path as evidence.
    Never downgrade a `mastered` concept on a single weak exercise without a note.
+
+Personal concepts use a `personal:` prefix and are track-local — never mark them as
+transverse, and never let them satisfy another track's transverse skip logic.
+
 5. Append a dated entry to `progress/<track>/log.md`. Offer the next step (next module,
    another exercise, or `revise`).
 

@@ -23,6 +23,10 @@ modules are first-class: include them in the proposed path alongside curated mod
 
 3. **Syntax never transfers**: always include the track's syntax module (e.g. `go-syntax`,
    `python-syntax`) unless `skills.md` shows it `proficient` (i.e. they used THIS language before).
+
+Only curated transverse concepts drive cross-track skipping; `personal:` concepts are
+track-local and never skip another track's modules.
+
 4. Pick the entry module: the earliest module whose prerequisites are satisfied and whose
    concepts are not all known. Explain the proposed path in 3–5 bullets, and offer to start.
 5. Write/update `progress/skills.md`. Set the level by reported depth: `learning` by default;
