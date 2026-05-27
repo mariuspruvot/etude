@@ -24,11 +24,12 @@ teach/generate from them exactly as from curated modules.
 4. End by offering an exercise (hand off to `exercise`). Append a one-line note to
    `progress/<track>/log.md`.
 
-Promotion: when the learner has repeatedly explored a niche (visible in
-`progress/<track>/explorations.md`) or asks to "make this a real module", OFFER to promote
-it: append a module to `progress/<track>/extensions.md` (id `xNN`, `concepts:` with a
-`personal:` prefix, `mastery`, `exercise_seeds`). Mention they can later PR it into the
-repo's `tracks/<track>/curriculum.md` to share it.
+Promotion: OFFER to promote a niche to a personal module when the SAME niche appears for the
+2nd time in `progress/<track>/explorations.md` (topic matching is by judgment — the log is
+free-text dated entries), OR whenever the learner asks to "make this a real module". Never
+impose it. To promote, append a module to `progress/<track>/extensions.md` (id `xNN`,
+`concepts:` with a `personal:` prefix, `mastery`, `exercise_seeds`). Mention they can later
+PR it into the repo's `tracks/<track>/curriculum.md` to share it.
 
 Never dump a wall of text. One concept at a time.
 
