@@ -5,6 +5,9 @@ description: Use when the learner asks where they are, their progress, or their 
 
 # Status
 
+Determine the active track from what the learner just said, else from `progress/profile.md`
+(`active_track`).
+
 1. Read `progress/profile.md` and `progress/skills.md`.
 2. Render a compact dashboard:
    - per active track: current module, % of modules touched,

@@ -5,6 +5,9 @@ description: Use to generate a calibrated exercise for the current module and wr
 
 # Exercise
 
+Determine the active track from what the learner just said, else from `progress/profile.md`
+(`active_track`).
+
 1. Pick an `exercise_seed` from the current module (or generate one at the right difficulty
    given `progress/skills.md`). Calibrate: harder if the learner is senior/transferring.
 2. Create `progress/<track>/exercises/NNN-<slug>/` (NNN = zero-padded 3-digit index; compute

@@ -5,6 +5,9 @@ description: Use when the learner has written a solution and wants it evaluated.
 
 # Grade
 
+Determine the active track from what the learner just said, else from `progress/profile.md`
+(`active_track`).
+
 1. Locate the exercise folder, then read its `prompt.md` frontmatter `solution_file` to find
    the learner's solution file (do not guess or glob for it). If that solution file does not
    exist yet, tell them to write one (you cannot — the hook blocks solution writes).

@@ -5,6 +5,9 @@ description: Use to deliver a focused lesson on the current module's concept(s) 
 
 # Teach
 
+Determine the active track from what the learner just said, else from `progress/profile.md`
+(`active_track`).
+
 1. Read the current module from `tracks/<track>/curriculum.md` (objectives, concepts, resources).
 2. For any library/API/tooling involved, fetch CURRENT usage via Context7 — do not rely on
    recollection. Prefer the `freshness_source` declared in the curriculum frontmatter.
