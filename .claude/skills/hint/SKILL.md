@@ -5,8 +5,9 @@ description: Use when the learner is stuck on the current exercise and asks for 
 
 # Hint
 
-Reveal help in TIERS, one tier per request. Track which tier you're at for this exercise
-(note it in `progress/<track>/log.md`).
+Reveal help in TIERS, one tier per request. Record the current tier in
+`progress/<track>/log.md` so a later `/hint` continues at the next tier. This is a
+continuity/learner record only — it does not automatically change the grade.
 
 - Tier 1 — orientation: restate the goal, point to the relevant concept/doc.
 - Tier 2 — lead: name the approach or data structure, without code.
