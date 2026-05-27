@@ -1,6 +1,6 @@
 ---
 name: revise
-description: Use for spaced-repetition review. Re-tests concepts that are due based on skills.md level + last_graded date, to fight forgetting.
+description: Use for spaced-repetition review. Re-tests due concepts (skills.md level + last_graded) and resurfaces stale deep-dive explorations, to fight forgetting.
 ---
 
 # Revise
