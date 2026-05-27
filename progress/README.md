@@ -22,6 +22,7 @@ cache. Back it up by copying this folder.
 display_name: <name or alias>
 known_languages: [python]        # languages the learner has shipped real code in
 goals: "<what the learner wants to achieve>"
+active_track: <track>            # the track currently being learned (e.g. go)
 created: <YYYY-MM-DD>
 ---
 
