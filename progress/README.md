@@ -15,3 +15,35 @@ cache. Back it up by copying this folder.
 
 ## Level scale
 `unknown → learning → proficient → mastered`
+
+## Template: `profile.md`
+```markdown
+---
+display_name: <name or alias>
+known_languages: [python]        # languages the learner has shipped real code in
+goals: "learn Go for backend services"
+created: 2026-05-27
+---
+
+# Profile
+Free-form notes the tutor keeps: strengths, weak spots, preferences (pace, depth).
+```
+
+## Template: `skills.md`
+```markdown
+# Competency map
+<!-- level: unknown | learning | proficient | mastered -->
+
+| concept            | level      | last_graded | evidence                       |
+|--------------------|------------|-------------|--------------------------------|
+| concurrency        | proficient | 2026-05-27  | python (prior), go/exercises/005 |
+| error-handling     | learning   | 2026-05-27  | go/exercises/003               |
+```
+
+## Template: `<track>/log.md`
+```markdown
+# Go — session log
+## 2026-05-27
+- Entered at m02 (syntax) — known_languages=[python], go-syntax unknown.
+- Completed exercise 001 (slices/maps). Score 8/10. concurrency untouched.
+```
