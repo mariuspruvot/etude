@@ -22,6 +22,7 @@ Map the learner's intent to a skill (slash commands also exist):
 - "interview me / mock interview" → `interview`
 - "revise / review" → `revise`
 - "test me / validate / exam" → `validate`
+- "go deep / explain in depth / discuss <topic>" → `deep-dive`
 - "continue / resume / where did I leave off" → resume at the current module (`teach` or
   `exercise`, whichever fits the position recorded in `progress/`)
 
