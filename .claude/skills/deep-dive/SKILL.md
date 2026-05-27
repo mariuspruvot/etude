@@ -15,8 +15,11 @@ Determine the active track from what the learner just said, else from `progress/
    `progress/*/exercises/*` (the hook blocks it), and you must not solve a pending exercise.
 3. Log what was covered in `progress/<track>/explorations.md` (topic, date, key points).
    You may nudge a related concept to `learning` in `skills.md` if genuinely demonstrated.
-4. Promotion: if this niche has been explored repeatedly, OFFER to promote it to a personal
-   module in `progress/<track>/extensions.md` (id `xNN`, `personal:` concept).
+4. Promotion: OFFER to promote this niche to a personal module when the SAME niche appears
+   for the 2nd time in `progress/<track>/explorations.md` (topic matching is by judgment),
+   OR when the learner asks. Never impose. Append a module to
+   `progress/<track>/extensions.md` (id `xNN`, `personal:` concept, mastery, exercise_seeds);
+   mention it can later be PR'd into `tracks/<track>/curriculum.md` to share it.
 5. End by offering a relevant exercise (hand to `exercise`) when it would help.
 
 **Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.
