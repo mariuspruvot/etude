@@ -233,9 +233,12 @@ This is primarily a prompt/content repo, so "tests" are mostly behavioral:
 
 ## 12. Assumptions
 
-- *Claude Code supports repo-local skills/hooks/agents/commands that ship inside the cloned
-  repo and activate on session start* — core premise of the whole design; needs a
-  confirming spike before heavy investment. `[claude-guessed]`
+- ~~*Claude Code supports repo-local skills/hooks/agents/commands that ship inside the
+  cloned repo and activate on session start*~~ — **VERIFIED** by feasibility spike
+  (`2026-05-27-etude-feasibility-spike.md`). All components load after clone; the only gate
+  is a single one-time per-directory trust dialog (confirmed via `hasTrustDialogAccepted`
+  in `~/.claude.json`). Implications folded into design: router lives in root `CLAUDE.md`,
+  no `@include`, README documents the one trust prompt.
 - *Context7 skill/MCP is available in the user's Claude Code setup* — used for library
   freshness; if absent, the tutor degrades to its own knowledge. `[claude-guessed]`
 - *A PreToolUse hook can reliably scope a matcher to solution files only* — load-bearing
