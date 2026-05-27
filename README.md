@@ -1,9 +1,29 @@
 # Étude
 
-Clone this repo, open it with Claude Code, and say *"I want to learn Go"* — it becomes your
-personal programming tutor: assesses your level, teaches, generates exercises calibrated to
-you, runs your code, grades it, and tracks your progress over time. From zero to the
-technical interview.
+Étude turns Claude Code into a programming tutor that runs inside a repo on your machine.
+Pick a track (a language or a technical subject) and it assesses your level, teaches one
+concept at a time, sets exercises calibrated to you, runs and grades the code you write, and
+keeps track of what you've learned across sessions.
+
+The point is that *you* write the code. A hook stops the tutor from writing your solution
+files, and hints come in steps rather than as a finished answer — it's a teacher with office
+hours, not a chatbot that completes your homework.
+
+## What it does
+
+- Assesses your level by conversation and skips what you already know (know Python? the Go
+  track teaches by contrast instead of from zero).
+- Teaches short lessons: one concept, one idiomatic example, the common pitfalls.
+- Generates exercises calibrated to your level, varying the format (implement, debug,
+  refactor, extend, write tests).
+- On executable tracks, runs your solution and grades it against the module's criteria, then
+  records the result as evidence in `progress/`.
+- Resumes where you left off next session, and re-tests concepts on a spaced schedule so they
+  don't fade.
+- Isn't limited to the bundled curricula: ask for a framework or a niche topic and it builds
+  a path from current docs (via Context7).
+- Teaches in the language you pick; code, identifiers, and CLI stay in English.
+- Runs mock interviews when you want them — verbal questions plus a graded live-coding round.
 
 ## Quickstart
 1. `git clone <repo> && cd etude`
@@ -17,6 +37,9 @@ up by copying that folder.
 
 ## Modes
 `/learn` · `/next` · `/hint` · `/grade` · `/status` · `/mini-app` · `/interview` · `/revise` · `/validate` · `/deep-dive` · `/language`
+
+You can also just say what you want in plain language ("give me an exercise", "I'm stuck",
+"where am I?", "interview me") — the tutor routes to the right mode.
 
 ## Integrity
 Claude is a tutor, not a solver: a hook blocks it from writing your solution files, and
