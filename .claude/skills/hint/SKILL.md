@@ -5,6 +5,9 @@ description: Use when the learner is stuck on the current exercise and asks for 
 
 # Hint
 
+Determine the active track from what the learner just said, else from `progress/profile.md`
+(`active_track`).
+
 Reveal help in TIERS, one tier per request. Record the current tier in
 `progress/<track>/log.md` so a later `/hint` continues at the next tier. This is a
 continuity/learner record only — it does not automatically change the grade.
