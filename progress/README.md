@@ -21,8 +21,8 @@ cache. Back it up by copying this folder.
 ---
 display_name: <name or alias>
 known_languages: [python]        # languages the learner has shipped real code in
-goals: "learn Go for backend services"
-created: 2026-05-27
+goals: "<what the learner wants to achieve>"
+created: <YYYY-MM-DD>
 ---
 
 # Profile
@@ -34,10 +34,10 @@ Free-form notes the tutor keeps: strengths, weak spots, preferences (pace, depth
 # Competency map
 <!-- level: unknown | learning | proficient | mastered -->
 
-| concept            | level      | last_graded | evidence                       |
-|--------------------|------------|-------------|--------------------------------|
+| concept            | level      | last_graded | evidence                         |
+|--------------------|------------|-------------|----------------------------------|
 | concurrency        | proficient | 2026-05-27  | python (prior), go/exercises/005 |
-| error-handling     | learning   | 2026-05-27  | go/exercises/003               |
+| error-handling     | learning   | 2026-05-27  | go/exercises/003                 |
 ```
 
 ## Template: `<track>/log.md`
