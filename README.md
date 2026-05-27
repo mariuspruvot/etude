@@ -23,7 +23,7 @@ Claude is a tutor, not a solver: a hook blocks it from writing your solution fil
 hints are graduated. You write the code; Claude guides and grades.
 
 ## Tracks
-Go and Python are full flagship tracks; JavaScript and SQL are stubs. A track is a
+Go and Python are full flagship tracks; TypeScript and SQL are stubs (JavaScript is taught as a subset of TypeScript). A track is a
 programming language or an adjacent technical subject. Adding one = writing a
 `tracks/<track>/curriculum.md` skeleton — contributions welcome.
 
@@ -43,5 +43,5 @@ modules. Ask for anything: `/deep-dive "Go escape analysis"`, "teach me FastAPI"
 - `python3` (for the integrity hook — stdlib only, no install).
 - The **toolchain of the track you're learning**, installed and on your `PATH`, so the
   tutor can actually run and grade your code (e.g. `go` for the Go track, a recent Python
-  for Python, `node` for JavaScript). Non-executable tracks (e.g. SQL in v1) are reviewed
+  for Python, `node` for TypeScript). Non-executable tracks (e.g. SQL in v1) are reviewed
   qualitatively and need no toolchain.
