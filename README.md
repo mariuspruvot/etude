@@ -30,3 +30,7 @@ programming language or an adjacent technical subject. Adding one = writing a
 ## Requirements
 - Claude Code, with Context7 available (for current library docs).
 - `python3` (for the integrity hook — stdlib only, no install).
+- The **toolchain of the track you're learning**, installed and on your `PATH`, so the
+  tutor can actually run and grade your code (e.g. `go` for the Go track, a recent Python
+  for Python, `node` for JavaScript). Non-executable tracks (e.g. SQL in v1) are reviewed
+  qualitatively and need no toolchain.
