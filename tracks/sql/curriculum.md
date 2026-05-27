@@ -1,13 +1,13 @@
 ---
 language: sql
 display_name: SQL
-target_version: "PostgreSQL 16"
+target_version: "PostgreSQL 17"
 freshness_source: context7
 maintainers: [community]
 
 concepts:
-  transverse: [data-modeling, query-design, performance]
-  language_specific: [joins, aggregation, window-functions, indexing, transactions]
+  transverse: [query-design]
+  language_specific: [joins, aggregation, window-functions]
 ---
 
 # SQL — Curriculum (stub)

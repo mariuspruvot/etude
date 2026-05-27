@@ -6,8 +6,8 @@ freshness_source: context7
 maintainers: [community]
 
 concepts:
-  transverse: [type-system, concurrency, testing, error-handling, io-streams]
-  language_specific: [js-syntax, closures, prototypes, event-loop, modules-esm]
+  transverse: [concurrency, dependency-management]
+  language_specific: [js-syntax, closures, event-loop]
 ---
 
 # JavaScript — Curriculum (stub)
@@ -18,7 +18,7 @@ concepts:
 
 ### m01 — Syntax & primitives
 - id: m01
-- concepts: [js-syntax]
+- concepts: [js-syntax, dependency-management]
 - prerequisites: []
 - ecosystem:
     tools: [node, npm]
@@ -34,7 +34,7 @@ concepts:
 - concepts: [closures, event-loop, concurrency]
 - prerequisites: [m01]
 - ecosystem:
-    libs: [Promise]
+    globals: [Promise]
 - resources:
     - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Event_loop
 - mastery:
