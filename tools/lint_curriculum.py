@@ -14,7 +14,16 @@ import yaml
 
 _FRONTMATTER = re.compile(r"\A---\n(.*?)\n---(?:\n|\Z)", re.DOTALL)
 _CONCEPTS_LINE = re.compile(r"(?<!\w)concepts:\s*\[([^\]]*)\]")
+_CAPSTONES = re.compile(r"^##\s+Capstones\b", re.IGNORECASE | re.MULTILINE)
 REQUIRED_TOP = ("language", "display_name", "target_version")
+
+
+def _concept_tags(text: str) -> list[str]:
+    """All concept ids referenced by `concepts: [...]` lists in text."""
+    tags: list[str] = []
+    for raw in _CONCEPTS_LINE.findall(text):
+        tags.extend(t.strip() for t in raw.split(",") if t.strip())
+    return tags
 
 
 def lint_text(text: str) -> list[str]:
@@ -41,12 +50,20 @@ def lint_text(text: str) -> list[str]:
     declared = set(transverse or []) | set(specific or [])
 
     body = text[m.end():]
-    for raw in _CONCEPTS_LINE.findall(body):
-        for tag in (t.strip() for t in raw.split(",") if t.strip()):
-            if tag not in declared:
-                msg = f"module references undeclared concept: {tag}"
-                if msg not in errors:
-                    errors.append(msg)
+    for tag in _concept_tags(body):
+        if tag not in declared:
+            msg = f"module references undeclared concept: {tag}"
+            if msg not in errors:
+                errors.append(msg)
+
+    cap = _CAPSTONES.search(body)
+    grounding_region = body[: cap.start()] if cap else body
+    grounded = set(_concept_tags(grounding_region))
+    for concept in (*(transverse or []), *(specific or [])):
+        if concept not in grounded:
+            msg = f"declared concept never grounded in a module: {concept}"
+            if msg not in errors:
+                errors.append(msg)
     return errors
 
 
