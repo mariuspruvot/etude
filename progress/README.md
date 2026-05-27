@@ -22,6 +22,7 @@ cache. Back it up by copying this folder.
 display_name: <name or alias>
 known_languages: [python]        # languages the learner has shipped real code in
 goals: "<what the learner wants to achieve>"
+language: en                     # learner's preferred prose language (bcp47); code stays English
 active_track: <track>            # the track currently being learned (e.g. go)
 created: <YYYY-MM-DD>
 ---
@@ -42,10 +43,33 @@ Free-form notes the tutor keeps: strengths, weak spots, preferences (pace, depth
 ```
 `last_graded` may be `—` for levels inferred from prior experience (not yet graded).
 
+Personal concepts (from `extensions.md`) are written with a `personal:` prefix in the
+concept column and are **track-local** (not counted as transverse transfer).
+
 ## Template: `<track>/log.md`
 ```markdown
 # Go — session log
 ## 2026-05-27
 - Entered at m02 (syntax) — known_languages=[python], go-syntax unknown.
 - Completed exercise 001 (slices/maps). Score 8/10. concurrency untouched.
+```
+
+## Template: `<track>/explorations.md`
+```markdown
+# Explorations — off-curriculum digressions (track-local log)
+## 2026-05-27 — goroutine scheduler internals
+- Discussed GMP model, work-stealing. Not a graded module. Follow-up: maybe promote.
+```
+
+## Template: `<track>/extensions.md`
+```markdown
+# Personal modules — promoted from repeated exploration (NOT shared/linted)
+### x01 — Goroutine scheduler internals
+- id: x01
+- concepts: [personal:go-scheduler]
+- prerequisites: [m06]
+- mastery:
+    - explains GMP, work-stealing, GOMAXPROCS effects
+- exercise_seeds:
+    - "trace why a CPU-bound goroutine starves others without runtime.Gosched"
 ```
