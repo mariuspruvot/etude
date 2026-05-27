@@ -14,6 +14,7 @@ concepts:
     - interfaces-polymorphism
     - dependency-management
     - io-streams
+    - memory-model
   language_specific:
     - python-syntax
     - comprehensions
@@ -108,7 +109,7 @@ concepts:
 
 ### m06 — Concurrency & asyncio
 - id: m06
-- concepts: [concurrency, asyncio, io-streams]
+- concepts: [concurrency, asyncio, io-streams, memory-model]
 - prerequisites: [m04]
 - ecosystem:
     libs: [asyncio, concurrent.futures]
@@ -116,6 +117,7 @@ concepts:
     - https://docs.python.org/3/library/asyncio.html
 - mastery:
     - chooses asyncio vs threads vs processes appropriately; cancels tasks; avoids blocking the loop
+    - explains the GIL and Python's object model (is vs ==, mutability)
 - exercise_seeds:
     - "build an async bounded fetcher with a semaphore and graceful cancellation"
 - transfer_note: |

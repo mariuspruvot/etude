@@ -40,6 +40,7 @@ Free-form notes the tutor keeps: strengths, weak spots, preferences (pace, depth
 | concurrency        | proficient | 2026-05-27  | python (prior), go/exercises/005 |
 | error-handling     | learning   | 2026-05-27  | go/exercises/003                 |
 ```
+`last_graded` may be `—` for levels inferred from prior experience (not yet graded).
 
 ## Template: `<track>/log.md`
 ```markdown
