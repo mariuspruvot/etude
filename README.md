@@ -13,7 +13,10 @@ hours, not a chatbot that completes your homework.
 
 - Assesses your level by conversation and skips what you already know (know Python? the Go
   track teaches by contrast instead of from zero).
-- Teaches short lessons: one concept, one idiomatic example, the common pitfalls.
+- Teaches in two registers: a short focused lesson when you just need the concept (the idea,
+  one idiomatic example, the common pitfalls), or an open, go-as-deep-as-you-want discussion
+  (`/deep-dive`) — internals, trade-offs, cross-language contrasts, edge cases — when you want
+  to really dig in.
 - Generates exercises calibrated to your level, varying the format (implement, debug,
   refactor, extend, write tests).
 - On executable tracks, runs your solution and grades it against the module's criteria, then
