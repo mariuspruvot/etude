@@ -259,6 +259,10 @@ exercises** (those are generated on the fly). The example below is a realistic
 - The `assess` skill reads `concepts.transverse`, cross-references the learner's
   `skills.md`, and **skips or fast-forwards** modules whose transverse concepts are
   already mastered.
+- **Syntax never transfers.** Language syntax/primitives is modeled as a
+  `language_specific` concept (`go-syntax`), so a learner who is senior elsewhere but new
+  to this language still gets the syntax module — taught fast and by contrast, not from
+  scratch. `assess` only skips it if the learner has used *this* language before.
 
 ### A.2 Example: `languages/go/curriculum.md`
 
@@ -282,6 +286,7 @@ concepts:
     - dependency-management
     - io-streams
   language_specific:            # Go-only nuance, tracked but not transferred
+    - go-syntax                 # variables, control flow, slices/maps, range — NEVER transfers
     - goroutines
     - channels
     - go-modules
@@ -314,10 +319,32 @@ concepts:
 - exercise_seeds:
     - "scaffold a CLI module that imports one third-party lib and runs `go vet` clean"
 
-### m02 — Types, structs & the type system
+### m02 — Syntax & primitives
 - id: m02
-- concepts: [type-system, struct-embedding]
+- concepts: [go-syntax]
 - prerequisites: [m01]
+- ecosystem:
+    tools: [gofmt, go run]
+    libs: [fmt]
+- resources:
+    - https://go.dev/tour/basics/1
+    - https://go.dev/tour/flowcontrol/1
+- mastery:
+    - declares variables (var, :=), writes loops/conditionals, and functions idiomatically
+    - uses slices and maps correctly (length vs capacity, range, nil map pitfalls)
+- exercise_seeds:
+    - "implement small pure functions over slices and maps (group, filter, count)"
+- transfer_note: |
+    This module does NOT transfer across languages — being senior elsewhere does not mean
+    you know Go's syntax. assess only skips m02 if skills.md shows go-syntax already
+    proficient (i.e. the learner has used Go before). For a paradigm-experienced newcomer,
+    teach syntax fast but DO teach it: contrast with their known language ("Go's slices
+    are not Python lists: ...") rather than from scratch.
+
+### m03 — Types, structs & the type system
+- id: m03
+- concepts: [type-system, struct-embedding]
+- prerequisites: [m02]
 - ecosystem:
     tools: [go vet]
     libs: [encoding/json]
@@ -334,10 +361,10 @@ concepts:
     primitives lesson and emphasize Go specifics: zero values, value vs pointer
     receivers, struct embedding instead of inheritance.
 
-### m03 — Errors & error handling
-- id: m03
+### m04 — Errors & error handling
+- id: m04
 - concepts: [error-handling, go-error-wrapping]
-- prerequisites: [m02]
+- prerequisites: [m03]
 - ecosystem:
     libs: [errors, fmt]
 - resources:
@@ -349,10 +376,10 @@ concepts:
 - exercise_seeds:
     - "build a parser that wraps low-level errors with context and is testable with errors.Is"
 
-### m04 — Interfaces & polymorphism
-- id: m04
+### m05 — Interfaces & polymorphism
+- id: m05
 - concepts: [interfaces-polymorphism]
-- prerequisites: [m02]
+- prerequisites: [m03]
 - ecosystem:
     libs: [io, sort]
 - resources:
@@ -364,10 +391,10 @@ concepts:
 - exercise_seeds:
     - "implement io.Writer for a custom sink and plug it into the standard library"
 
-### m05 — Concurrency: goroutines & channels
-- id: m05
+### m06 — Concurrency: goroutines & channels
+- id: m06
 - concepts: [concurrency, goroutines, channels, memory-model]
-- prerequisites: [m03]
+- prerequisites: [m04]
 - ecosystem:
     tools: [go test -race]
     libs: [sync, context]
@@ -386,10 +413,10 @@ concepts:
     intro and contrast models directly: CSP/channels vs async-await, the race detector,
     the Go memory model's happens-before guarantees.
 
-### m06 — Testing & benchmarks
-- id: m06
+### m07 — Testing & benchmarks
+- id: m07
 - concepts: [testing]
-- prerequisites: [m03]
+- prerequisites: [m04]
 - ecosystem:
     tools: [go test, go test -bench, go test -cover]
     libs: [testing, testify]
@@ -413,8 +440,15 @@ concepts:
 ### A.3 How this drives the engine
 
 - **`assess`** reads `concepts.transverse`, compares against `progress/skills.md`, and
-  picks the entry module (a senior Python dev may enter at `m05` for concurrency contrast
-  rather than `m01`). `transfer_note` blocks tell the tutor how to compress known ground.
+  picks the entry module. A senior Python dev mastering concurrency does **not** skip to
+  `m06`: `language_specific` concepts like `go-syntax` (m02) gate the path, so they still
+  cover syntax (fast, by contrast) before the concurrency module compresses what they
+  already know. `transfer_note` blocks tell the tutor how to compress known ground.
+- **Level granularity** — `skills.md` tracks each concept on a fixed scale so the skip
+  logic is deterministic: `unknown → learning → proficient → mastered`. `assess` skips a
+  module only when every one of its concepts is `proficient`+ (transverse) or the language
+  was used before (`language_specific`). `grade` is what promotes a concept up the scale,
+  with the graded exercise recorded as evidence.
 - **`teach`** expands a module into a lesson, pulling current API/lib usage via Context7
   (`freshness_source`), not the module's static links alone.
 - **`exercise`** expands an `exercise_seed` into a concrete, calibrated exercise written to
