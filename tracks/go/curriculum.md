@@ -1,7 +1,7 @@
 ---
 language: go
 display_name: Go
-target_version: "1.23"          # tutor calibrates to this; Context7 fetches current docs
+target_version: "1.24"          # tutor calibrates to this; Context7 fetches current docs
 freshness_source: context7      # prefer Context7 over model recollection for libs/APIs
 maintainers: [community]
 
@@ -94,7 +94,7 @@ concepts:
 
 ### m04 — Errors & error handling
 - id: m04
-- concepts: [error-handling, go-error-wrapping]
+- concepts: [error-handling, go-error-wrapping, defer-panic-recover]
 - prerequisites: [m03]
 - ecosystem:
     libs: [errors, fmt]
@@ -109,7 +109,7 @@ concepts:
 
 ### m05 — Interfaces & polymorphism
 - id: m05
-- concepts: [interfaces-polymorphism]
+- concepts: [interfaces-polymorphism, io-streams]
 - prerequisites: [m03]
 - ecosystem:
     libs: [io, sort]
