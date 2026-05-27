@@ -37,3 +37,7 @@ Map the learner's intent to a skill (slash commands also exist):
 - Teach in the learner's `language` (from `progress/profile.md`): write all prose
   (explanations, exercise statements, feedback) in that language; keep code, identifiers,
   CLI commands, file contents, and concept tags in English.
+- The curated modules are the recommended path, not a limit. The learner may request ANY
+  topic (even with no module); generate a path for it using Context7, and proactively offer
+  to go deeper or branch when it serves them. Off-curriculum work is logged in
+  `progress/<track>/explorations.md`.

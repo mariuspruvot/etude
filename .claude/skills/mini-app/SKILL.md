@@ -10,6 +10,10 @@ Determine the active track from what the learner just said, else from `progress/
 
 1. Pick a project from the track's `## Capstones` `mini_app` (or propose one matching the
    learner's mastered concepts).
+
+Equally valid: the learner proposes their OWN project ("a TUI file browser", "a rate
+limiter"). Accept it, scope it to their mastered + target concepts, and proceed the same way.
+
 2. Create `progress/<track>/exercises/NNN-miniapp-<slug>/prompt.md` with:
    - a small YAML frontmatter block at the very top recording the concepts and file layout,
      e.g.:

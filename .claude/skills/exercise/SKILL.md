@@ -8,6 +8,10 @@ description: Use to generate a calibrated exercise for the current module and wr
 Determine the active track from what the learner just said, else from `progress/profile.md`
 (`active_track`).
 
+You are not limited to the curated modules: if the learner names a topic with no module
+(a framework, a library, a niche), generate the lesson/exercise for it using Context7 for
+current docs, and log it in `progress/<track>/explorations.md`.
+
 1. Pick an `exercise_seed` from the current module (or generate one at the right difficulty
    given `progress/skills.md`). Calibrate: harder if the learner is senior/transferring.
 2. Create `progress/<track>/exercises/NNN-<slug>/` (NNN = zero-padded 3-digit index; compute

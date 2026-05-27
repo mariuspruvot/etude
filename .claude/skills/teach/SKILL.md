@@ -8,6 +8,10 @@ description: Use to deliver a focused lesson on the current module's concept(s) 
 Determine the active track from what the learner just said, else from `progress/profile.md`
 (`active_track`).
 
+You are not limited to the curated modules: if the learner names a topic with no module
+(a framework, a library, a niche), generate the lesson/exercise for it using Context7 for
+current docs, and log it in `progress/<track>/explorations.md`.
+
 1. Read the current module from `tracks/<track>/curriculum.md` (objectives, concepts, resources).
 2. For any library/API/tooling involved, fetch CURRENT usage via Context7 — do not rely on
    recollection. Prefer the `freshness_source` declared in the curriculum frontmatter.

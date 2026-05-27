@@ -11,6 +11,11 @@ Determine the active track from what the learner just said, else from `progress/
 1. Locate the exercise folder, then read its `prompt.md` frontmatter `solution_file` to find
    the learner's solution file (do not guess or glob for it). If that solution file does not
    exist yet, tell them to write one (you cannot — the hook blocks solution writes).
+
+For an off-curriculum exercise (no curated module), grade against the acceptance criteria
+in `prompt.md`; record the result under a `personal:`-prefixed concept in `skills.md`
+(track-local), not a curated concept.
+
 2. Dispatch the `grader` agent, passing the exercise folder path (the current exercise — the
    most recent folder in `progress/<track>/exercises/`; if ambiguous, ask the learner which
    one). Execution happens when relevant; otherwise qualitative review (decision: "execution
