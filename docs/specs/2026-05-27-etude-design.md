@@ -49,7 +49,8 @@ the technical interview."*
 | 5 | Session piloting | **Hybrid**: natural language (root `CLAUDE.md` router) + slash-command shortcuts |
 | 6 | Grading | **Execution when relevant** — run code/tests if testable, otherwise qualitative review |
 | 7 | Tutor integrity | **Hook (hard guard) + graduated hints** — a PreToolUse hook blocks Claude from writing solution files; the skill reveals hints by tiers |
-| 8 | v1 scope | All 4 modes (course, exercise, mini-app, interview); Go + Python as full flagships; JS + SQL as stubs |
+| 8 | v1 scope | 6 modes (course, exercise, mini-app, interview, revise, validate); Go + Python as full flagships; JS + SQL as stubs |
+| 8b | Track abstraction | Unit is a **track** (prog language or adjacent tech subject); `tracks/` dir; engine subject-agnostic, v1 positioning stays programming/tech |
 | 9 | Name | **Étude** (musical étude = progressively harder practice pieces, repeated to master) |
 
 ## 4. Entry Door
@@ -67,8 +68,18 @@ mode, so it slots in cheaply later.
 
 ## 5. Repo / Personal Split (architecture keystone)
 
-- **The repo = the engine** (versioned, community-maintained): per-language competency
+- **The repo = the engine** (versioned, community-maintained): per-track competency
   skeletons + skills/hooks/agents/instructions. **No exercises are pre-written.**
+
+> **Track generality.** The engine is subject-agnostic — a `curriculum.md` is just
+> "objectives + concept tags + mastery criteria + exercise seeds", which fits any
+> technical subject. The unit is a **track**: a programming language (Go, Python) *or* an
+> adjacent technical subject (SQL, design systems, DevOps, AWS). Executable tracks run
+> tests in `grade`; non-executable ones (e.g. design systems) degrade gracefully to
+> qualitative review (decision #6). **v1 positioning stays programming/tech**; nothing in
+> the architecture bakes in "programming only", so new tracks slot in without engine
+> changes. Broader non-tech subjects (math, languages, history) are a long-term
+> possibility, explicitly out of v1 scope.
 - **`progress/` = the user** (gitignored, source of truth): profile, competency map,
   generated exercises, corrections. Claude Code memory is a comfort cache only.
 
@@ -82,24 +93,25 @@ etude/
 ├── README.md                 # pitch + quickstart
 ├── CLAUDE.md                 # root router: detect intent, load progress/, route to a mode
 ├── .gitignore                # ignores progress/ (except progress/README.md)
-├── languages/                # the curated part (lightweight)
+├── tracks/                   # the curated part (lightweight). A track = a prog language
+│   │                         # OR an adjacent technical subject (SQL, design-systems...)
 │   ├── go/
 │   │   ├── curriculum.md      # ordered objectives + concept tags + ecosystem/libs + external resources
-│   │   └── CLAUDE.md          # language-specific tutor notes (idioms, tooling: go test, modules)
+│   │   └── CLAUDE.md          # track-specific tutor notes (idioms, tooling: go test, modules)
 │   ├── python/
 │   │   ├── curriculum.md
 │   │   └── CLAUDE.md
 │   ├── javascript/           # stub (skeleton present, lightly filled)
 │   └── sql/                  # stub
 ├── .claude/
-│   ├── skills/               # assess · teach · exercise · grade · hint · mini-app · interview · status
+│   ├── skills/               # assess · teach · exercise · grade · hint · mini-app · interview · status · revise · validate
 │   ├── agents/               # grader (runs tests + evaluates) · interviewer (conducts mock interview)
 │   ├── hooks/                # protect-solutions (PreToolUse)
-│   └── commands/             # /learn /next /grade /hint /status /interview /mini-app
+│   └── commands/             # /learn /next /grade /hint /status /interview /mini-app /revise /validate
 └── progress/                 # GITIGNORED — local only, created on first session
     ├── README.md             # the ONE tracked file (explains the folder)
     ├── profile.md            # who you are, known concepts, goals
-    ├── skills.md             # competency map: concept → level + evidence
+    ├── skills.md             # competency map: concept → level + last-graded date + evidence
     └── go/
         ├── log.md            # session journal
         └── exercises/001-goroutines/{prompt.md, solution.go, feedback.md}
@@ -137,6 +149,11 @@ never appears in `git status`, is never committed, and never conflicts on `git p
   candidate writes code under interview conditions, which the `grader` agent executes and
   scores (correctness + reasoning), in addition to verbal Q&A.
 - **status** — render a progress dashboard from `progress/`.
+- **revise** — spaced-repetition review: re-tests concepts whose `skills.md` entry is due
+  (based on last-graded date + level), to fight forgetting before re-learning is needed.
+- **validate** — exam mode: no teaching, just prove mastery of a concept/track via a
+  graded assessment (uses the `grade`/`grader` path). Useful to certify an existing skill
+  without replaying its path.
 
 ### Agents (subagents)
 - **grader** — runs tests / executes code in isolation, returns structured evaluation.
@@ -159,7 +176,7 @@ Natural language always works in parallel via the root `CLAUDE.md` router.
 1. **Session start** → `CLAUDE.md` reads `progress/profile.md` + `skills.md` → greets the
    user at their current position.
 2. **"learn Go"** (path) or **"drill goroutines"** (targeted) → `assess` (if new) → reads
-   `languages/go/curriculum.md` → proposes a plan, **skipping mastered concepts** (using
+   `tracks/go/curriculum.md` → proposes a plan, **skipping mastered concepts** (using
    transverse tags — prior knowledge in other languages counts).
 3. **teach** → Context7 for fresh docs/libs → short lesson.
 4. **/next** → `exercise` generates a calibrated exercise into
@@ -175,7 +192,7 @@ Natural language always works in parallel via the root `CLAUDE.md` router.
 ## 9. Edge Cases & Error Handling
 
 - **No progress yet** → onboarding via `assess`; create `progress/` scaffold.
-- **Unknown language** (not in `languages/`) → Claude can **bootstrap a skeleton on the
+- **Unknown track** (not in `tracks/`) → Claude can **bootstrap a skeleton on the
   fly**, marked experimental; user can later contribute it upstream.
 - **Hook false positives** → the matcher must scope tightly to solution files so Claude
   can still write `prompt.md` / `feedback.md`.
@@ -186,18 +203,22 @@ Natural language always works in parallel via the root `CLAUDE.md` router.
 ## 10. v1 Scope vs Roadmap
 
 ### v1 (publishable on HN)
-- Polished engine: 4 modes (course, exercise, mini-app, interview).
-- **Go + Python** as full flagships (including ecosystem/libs: uv/pytest/ruff for Python,
-  modules/stdlib/`go test` for Go).
-- **JS + SQL** as stubs (skeleton present, lightly filled) to prove the multi-tech model.
+- Polished engine: 6 modes (course, exercise, mini-app, interview, **revise**,
+  **validate**).
+- **Go + Python** as full flagship tracks (including ecosystem/libs: uv/pytest/ruff for
+  Python, modules/stdlib/`go test` for Go).
+- **JS + SQL** as stub tracks (skeleton present, lightly filled) to prove the multi-track
+  model.
 - Integrity hook + graduated hints.
 - Context7 wired in for freshness.
-- On-the-fly skeleton bootstrap for unknown languages (experimental).
+- On-the-fly skeleton bootstrap for unknown tracks (experimental).
+- Engine is track-agnostic (positioning stays programming/tech for v1).
 
 ### Roadmap (post-v1)
 - **Targeted drill** entry door (concept-first / weak-spots-first practice).
-- More community-contributed languages.
-- Spaced repetition over weak concepts.
+- More community-contributed tracks — first the adjacent tech ones (design systems,
+  DevOps, AWS), since they slot into the existing engine.
+- Non-tech subjects (math, languages, history) — longer-term, validates full generality.
 - Progress export/sharing (e.g. `git init` inside `progress/` to push to a private repo).
 - Dated challenges.
 
@@ -207,7 +228,7 @@ This is primarily a prompt/content repo, so "tests" are mostly behavioral:
 - **Hook smoke test**: attempting to write a `progress/**/solution.*` file is blocked.
 - **Walkthrough transcripts**: a documented end-to-end session (assess → teach → exercise
   → grade) per flagship language, kept in `docs/` as living examples.
-- **Skeleton lint**: each `languages/<lang>/curriculum.md` declares concept tags in a
+- **Skeleton lint**: each `tracks/<track>/curriculum.md` declares concept tags in a
   consistent frontmatter shape (so transverse tracking works).
 
 ## 12. Assumptions
@@ -240,11 +261,11 @@ Open:
 
 ## Appendix A — `curriculum.md` reference example
 
-This is the most important file format in the repo: the per-language **skeleton** the
+This is the most important file format in the repo: the per-track **skeleton** the
 engine reads. It is curated and lightweight — it contains **objectives, concept tags,
 ecosystem pointers, resources, and mastery criteria**, but **no lessons and no
 exercises** (those are generated on the fly). The example below is a realistic
-`languages/go/curriculum.md` that an implementer can copy as the canonical shape.
+`tracks/go/curriculum.md` that an implementer can copy as the canonical shape.
 
 ### A.1 File contract
 
@@ -264,7 +285,7 @@ exercises** (those are generated on the fly). The example below is a realistic
   to this language still gets the syntax module — taught fast and by contrast, not from
   scratch. `assess` only skips it if the learner has used *this* language before.
 
-### A.2 Example: `languages/go/curriculum.md`
+### A.2 Example: `tracks/go/curriculum.md`
 
 ```markdown
 ---
