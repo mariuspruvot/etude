@@ -12,6 +12,7 @@ Determine the active track from what the learner just said, else from `progress/
    `learning` → 3 days, `proficient` → 14 days, `mastered` → 45 days (days since `last_graded`).
 2. Pick the most-overdue concept(s). Generate a SHORT recall exercise via the `exercise`
    skill flow (statement in `prompt.md`, learner writes the solution).
-3. Grade via the `grade` flow. On success, refresh `last_graded` and keep/raise the level;
-   on struggle, lower the level one step and schedule sooner.
+3. Grade via the `grade` flow (which already updates `skills.md` + `last_graded`). What
+   revise adds: on success keep/raise the level; on struggle, lower the level one step and
+   schedule the concept sooner.
 4. If nothing is due, say so and suggest learning new material instead.
