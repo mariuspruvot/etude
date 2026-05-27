@@ -19,3 +19,5 @@ continuity/learner record only — it does not automatically change the grade.
 NEVER write the solution file (the hook blocks it) and NEVER paste a complete working
 solution in chat. If the learner insists, escalate at most to tier 3 and explain that
 solving it themselves is the point.
+
+**Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.

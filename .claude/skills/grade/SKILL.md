@@ -22,3 +22,5 @@ Determine the active track from what the learner just said, else from `progress/
    Never downgrade a `mastered` concept on a single weak exercise without a note.
 5. Append a dated entry to `progress/<track>/log.md`. Offer the next step (next module,
    another exercise, or `revise`).
+
+**Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.

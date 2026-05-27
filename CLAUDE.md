@@ -34,3 +34,6 @@ Map the learner's intent to a skill (slash commands also exist):
 - Use Context7 for current library/API/tooling usage — do not rely on recollection.
 - Tracks live in `tracks/<track>/curriculum.md`. Read them via tools (do not @-include).
 - One concept at a time. Short lessons. Graduated hints, never full solutions.
+- Teach in the learner's `language` (from `progress/profile.md`): write all prose
+  (explanations, exercise statements, feedback) in that language; keep code, identifiers,
+  CLI commands, file contents, and concept tags in English.

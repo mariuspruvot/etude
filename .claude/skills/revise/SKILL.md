@@ -18,3 +18,5 @@ Determine the active track from what the learner just said, else from `progress/
    authorizes downgrading a `mastered` concept (the note `grade` requires = "failed
    revision on <date>").
 4. If nothing is due, say so and suggest learning new material instead.
+
+**Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.

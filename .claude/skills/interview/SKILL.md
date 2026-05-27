@@ -24,3 +24,5 @@ Determine the active track from what the learner just said, else from `progress/
    field) and scored by the `grader` agent.
 3. Write `feedback.md` with the debrief (verbal score, coding score, communication,
    next steps) and update `skills.md` for the assessed concepts.
+
+**Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.

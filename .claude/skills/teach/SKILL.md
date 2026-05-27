@@ -18,3 +18,5 @@ Determine the active track from what the learner just said, else from `progress/
    `progress/<track>/log.md`.
 
 Never dump a wall of text. One concept at a time.
+
+**Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.

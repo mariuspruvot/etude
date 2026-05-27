@@ -15,3 +15,5 @@ Determine the active track from what the learner just said, else from `progress/
    - weak spots (lowest levels) and concepts due for revision (oldest `last_graded`),
    - a suggested next action.
 Read-only: do not modify any files.
+
+**Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.

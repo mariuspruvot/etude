@@ -15,3 +15,5 @@ Determine the active track from what the learner just said, else from `progress/
 4. Update `skills.md`: set passed concepts to `proficient` (or `mastered` if already
    proficient and the assessment was hard), with `last_graded` = today and evidence.
    Report a clear verdict ("validated: concurrency, error-handling; not yet: testing").
+
+**Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.

@@ -30,3 +30,5 @@ Determine the active track from what the learner just said, else from `progress/
    agent on the exercise folder for a milestone review; give graduated hints, never write
    their code.
 4. On completion, write `feedback.md` and update `skills.md` for the involved concepts.
+
+**Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.
