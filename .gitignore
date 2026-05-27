@@ -1,0 +1,10 @@
+# Personal learning progress is local-only; never committed.
+progress/*
+!progress/README.md
+
+# Python dev tooling
+__pycache__/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
