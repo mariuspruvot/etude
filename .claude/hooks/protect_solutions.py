@@ -1,7 +1,12 @@
 """PreToolUse hook: block Claude from writing the learner's solution files.
 
 Runtime dependency-free (python3 stdlib only). Reads a PreToolUse JSON payload on
-stdin; exits 2 (with a reason on stderr) to block a disallowed Write/Edit.
+stdin. Contract:
+  - exit 2 (with a reason on stderr) = BLOCK a disallowed Write/Edit/MultiEdit/NotebookEdit.
+  - exit 0 = ALLOW. This includes any malformed input (unparseable JSON, non-dict
+    payload, missing/wrong-typed fields): the hook fails OPEN and never crashes, so a
+    malformed payload can never accidentally exit 1 (a non-blocking error that would let
+    the write proceed unannounced). Claude Code always sends well-formed payloads.
 """
 
 from __future__ import annotations
@@ -10,7 +15,7 @@ import json
 import sys
 from pathlib import Path
 
-WRITE_TOOLS = {"Write", "Edit", "MultiEdit"}
+WRITE_TOOLS = {"Write", "Edit", "MultiEdit", "NotebookEdit"}
 ALLOWED_IN_EXERCISES = {"prompt.md", "feedback.md"}
 
 
@@ -20,9 +25,9 @@ def is_protected(tool_name: str, file_path: str) -> bool:
         return False
     if not file_path:
         return False
-    parts = Path(file_path).parts
-    if "progress" in parts and "exercises" in parts:
-        return Path(file_path).name not in ALLOWED_IN_EXERCISES
+    p = Path(file_path)
+    if "progress" in p.parts and "exercises" in p.parts:
+        return p.name not in ALLOWED_IN_EXERCISES
     return False
 
 
@@ -31,8 +36,14 @@ def main() -> int:
         payload = json.load(sys.stdin)
     except json.JSONDecodeError:
         return 0
+    if not isinstance(payload, dict):
+        return 0
     tool_name = payload.get("tool_name", "")
-    file_path = payload.get("tool_input", {}).get("file_path", "")
+    tool_input = payload.get("tool_input")
+    if not isinstance(tool_input, dict):
+        tool_input = {}
+    raw_path = tool_input.get("file_path") or tool_input.get("notebook_path", "")
+    file_path = raw_path if isinstance(raw_path, str) else ""
     if is_protected(tool_name, file_path):
         sys.stderr.write(
             "Étude integrity guard: solution files in progress/.../exercises/ must be "
