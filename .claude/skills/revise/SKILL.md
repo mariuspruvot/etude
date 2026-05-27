@@ -14,5 +14,7 @@ Determine the active track from what the learner just said, else from `progress/
    skill flow (statement in `prompt.md`, learner writes the solution).
 3. Grade via the `grade` flow (which already updates `skills.md` + `last_graded`). What
    revise adds: on success keep/raise the level; on struggle, lower the level one step and
-   schedule the concept sooner.
+   schedule the concept sooner. A revision struggle IS the documented reason that
+   authorizes downgrading a `mastered` concept (the note `grade` requires = "failed
+   revision on <date>").
 4. If nothing is due, say so and suggest learning new material instead.
