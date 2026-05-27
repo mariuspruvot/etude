@@ -31,7 +31,9 @@ Promotion: OFFER to promote a niche to a personal module when the SAME niche app
 free-text dated entries), OR whenever the learner asks to "make this a real module". Never
 impose it. To promote, append a module to `progress/<track>/extensions.md` (id `xNN`,
 `concepts:` with a `personal:` prefix, `mastery`, `exercise_seeds`). Mention they can later
-PR it into the repo's `tracks/<track>/curriculum.md` to share it.
+PR it to share it — as a curated overlay (`tracks/<track>/overlays/<name>.md`, see
+`tracks/OVERLAYS.md`) for a framework/library, or into `curriculum.md` for a true
+core-language gap.
 
 Never dump a wall of text. One concept at a time.
 

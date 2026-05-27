@@ -19,7 +19,9 @@ Determine the active track from what the learner just said, else from `progress/
    for the 2nd time in `progress/<track>/explorations.md` (topic matching is by judgment),
    OR when the learner asks. Never impose. Append a module to
    `progress/<track>/extensions.md` (id `xNN`, `personal:` concept, mastery, exercise_seeds);
-   mention it can later be PR'd into `tracks/<track>/curriculum.md` to share it.
+   mention it can later be PR'd to share it — as a curated overlay
+   (`tracks/<track>/overlays/<name>.md`, see `tracks/OVERLAYS.md`) for a framework/library,
+   or into `curriculum.md` for a true core-language gap.
 5. End by offering a relevant exercise (hand to `exercise`) when it would help.
 
 **Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.
