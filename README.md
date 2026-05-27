@@ -13,7 +13,10 @@ hours, not a chatbot that completes your homework.
 
 - Assesses your level by conversation and skips what you already know (know Python? the Go
   track teaches by contrast instead of from zero).
-- Teaches short lessons: one concept, one idiomatic example, the common pitfalls.
+- Teaches in two registers: a short focused lesson when you just need the concept (the idea,
+  one idiomatic example, the common pitfalls), or an open, go-as-deep-as-you-want discussion
+  (`/deep-dive`) — internals, trade-offs, cross-language contrasts, edge cases — when you want
+  to really dig in.
 - Generates exercises calibrated to your level, varying the format (implement, debug,
   refactor, extend, write tests).
 - On executable tracks, runs your solution and grades it against the module's criteria, then
@@ -24,6 +27,20 @@ hours, not a chatbot that completes your homework.
   a path from current docs (via Context7).
 - Teaches in the language you pick; code, identifiers, and CLI stay in English.
 - Runs mock interviews when you want them — verbal questions plus a graded live-coding round.
+
+## What's tracked
+Everything lives in `progress/` (local, gitignored):
+
+- **Competencies** — per concept, a level (`unknown → learning → proficient → mastered`) with
+  the date and the exercise that proved it. Graded exercises move these levels; `revise`
+  re-tests them on a spaced schedule.
+- **Explorations** — deep-dive sessions are logged (topic, date, what was covered). They can
+  nudge a concept to `learning` and resurface later for review, but they record that you
+  *explored* something, not that you can *do* it — a graded exercise is what proves the skill.
+- **Personal modules** — a niche you keep returning to can be promoted into your own module,
+  and later shared back as a curated overlay.
+
+`/status` renders all of this; `/revise` uses it to fight forgetting.
 
 ## Quickstart
 1. `git clone <repo> && cd etude`
