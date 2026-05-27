@@ -11,6 +11,8 @@ Goal: figure out where the learner should start, cheaply, by conversation — ne
    Ask 2–3 questions max: which languages they've shipped real code in, their goal, preferred pace.
    Record the track being learned as an `active_track: <track>` field in the profile frontmatter
    (create or update it).
+- Set `language` in `progress/profile.md`: detect the language the learner is writing in;
+  if ambiguous, ask once ("In which language should I teach — keeping code in English?").
 2. Read `tracks/<track>/curriculum.md`. For each **transverse** concept, check
    `progress/skills.md`. A concept is considered known if level is `proficient`+ OR the
    learner reports real experience with it in another language (record that as evidence:
