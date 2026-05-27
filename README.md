@@ -28,6 +28,20 @@ hours, not a chatbot that completes your homework.
 - Teaches in the language you pick; code, identifiers, and CLI stay in English.
 - Runs mock interviews when you want them — verbal questions plus a graded live-coding round.
 
+## What's tracked
+Everything lives in `progress/` (local, gitignored):
+
+- **Competencies** — per concept, a level (`unknown → learning → proficient → mastered`) with
+  the date and the exercise that proved it. Graded exercises move these levels; `revise`
+  re-tests them on a spaced schedule.
+- **Explorations** — deep-dive sessions are logged (topic, date, what was covered). They can
+  nudge a concept to `learning` and resurface later for review, but they record that you
+  *explored* something, not that you can *do* it — a graded exercise is what proves the skill.
+- **Personal modules** — a niche you keep returning to can be promoted into your own module,
+  and later shared back as a curated overlay.
+
+`/status` renders all of this; `/revise` uses it to fight forgetting.
+
 ## Quickstart
 1. `git clone <repo> && cd etude`
 2. Open Claude Code: `claude`
