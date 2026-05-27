@@ -79,6 +79,8 @@ concepts:
     - annotates functions fully; models data with dataclasses; uses generics; passes mypy --strict
 - exercise_seeds:
     - "model a domain with dataclasses + a generic container, fully typed, mypy --strict clean"
+    - "debug: mypy --strict rejects a function — fix the annotations without using Any"
+    - "read-and-explain: why does this generic container lose its type under mypy?"
 
 ### m04 — Errors & exceptions
 - id: m04
@@ -137,6 +139,8 @@ concepts:
     - writes parametrized tests + fixtures; measures coverage; uses test doubles (no unittest.mock)
 - exercise_seeds:
     - "convert a function to parametrized pytest cases and add a fixture-backed test double"
+    - "extend: add a parametrized edge-case to an existing pytest suite"
+    - "debug: a fixture leaks state between tests — find and fix it"
 
 ## Capstones
 - mini_app: "an async CLI that fetches N URLs with bounded concurrency, typed, pytest-covered"
