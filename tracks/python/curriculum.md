@@ -36,13 +36,14 @@ concepts:
 - concepts: [dependency-management]
 - prerequisites: []
 - ecosystem:
-    tools: [uv, ruff, python -m venv]
+    tools: [uv, ruff]
     files: [pyproject.toml]
 - resources:
     - https://docs.astral.sh/uv/
-    - https://docs.python.org/3/tutorial/venv.html
+    - https://docs.astral.sh/uv/concepts/projects/
 - mastery:
     - creates a project with uv, adds/removes a dependency, runs a script via `uv run`
+    - configures and runs ruff clean via pyproject.toml
 - exercise_seeds:
     - "scaffold a uv project exposing one CLI entry point that runs ruff clean"
 
@@ -94,7 +95,7 @@ concepts:
 ### m05 — Idioms: decorators & context managers
 - id: m05
 - concepts: [decorators, context-managers, interfaces-polymorphism]
-- prerequisites: [m03]
+- prerequisites: [m03, m04]
 - ecosystem:
     libs: [contextlib, functools]
 - resources:
@@ -107,7 +108,7 @@ concepts:
 
 ### m06 — Concurrency & asyncio
 - id: m06
-- concepts: [concurrency, asyncio]
+- concepts: [concurrency, asyncio, io-streams]
 - prerequisites: [m04]
 - ecosystem:
     libs: [asyncio, concurrent.futures]
