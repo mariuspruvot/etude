@@ -18,6 +18,8 @@ from pathlib import Path
 
 import yaml
 
+# Frontmatter parsing is intentionally duplicated from lint_curriculum.py, not shared:
+# the core linter is a closed artifact that must stay byte-for-byte unchanged.
 _FRONTMATTER = re.compile(r"\A---\n(.*?)\n---(?:\n|\Z)", re.DOTALL)
 _MODULE_HEADER = re.compile(r"^###\s+(o\d+)\b", re.MULTILINE)
 _LIST_FIELD = re.compile(r"^-\s*(concepts|prerequisites):\s*\[([^\]]*)\]", re.MULTILINE)
@@ -29,7 +31,7 @@ def _items(raw: str) -> list[str]:
 
 
 def parent_declared_concepts(parent_text: str) -> set[str]:
-    """transverse + language_specific concepts declared in a parent curriculum's frontmatter."""
+    """Transverse + language_specific concepts declared in a parent curriculum's frontmatter."""
     m = _FRONTMATTER.match(parent_text)
     if not m:
         return set()
@@ -76,7 +78,7 @@ def lint_overlay_text(text: str, parent_concepts: set[str]) -> list[str]:
     for key in REQUIRED_TOP:
         if key not in fm:
             errors.append(f"frontmatter missing required key: {key}")
-    if fm.get("kind") != "overlay":
+    if "kind" in fm and fm.get("kind") != "overlay":
         errors.append("frontmatter kind must be 'overlay'")
 
     name = fm.get("name")
@@ -105,6 +107,9 @@ def lint_overlay_text(text: str, parent_concepts: set[str]) -> list[str]:
             errors.append(f"requires_parent concept not in parent track: {c}")
     req_parent_set = {str(c) for c in requires_parent}
 
+    # Prerequisites must reference an EARLIER module (or a parent: concept). Enforcing
+    # document order makes forward references impossible, which subsumes spec rule 8
+    # (the overlay module DAG is acyclic) without a separate graph check.
     body = text[m.end() :]
     seen: set[str] = set()
     for mid, mod_concepts, prereqs in _modules(body):
