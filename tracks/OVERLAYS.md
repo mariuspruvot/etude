@@ -45,6 +45,18 @@ concepts:
 - Each module `prerequisites:` entry is either `parent:<concept>` (in `requires_parent`) or an
   **earlier** `oNN` module in the file (document order ⇒ no cycles).
 
+## Concept-parity convention (not linted)
+
+When authoring an overlay alongside siblings, maximise concept-suffix parity so
+cross-framework transfer is visible in a learner's `skills.md`:
+
+- every overlay's final module is `<name>:testing`;
+- HTTP-framework overlays use `<name>:routing` for `o01`;
+- mirror a sibling's arc where roles genuinely align (NestJS mirrors FastAPI:
+  `routing`/`validation`/`di`/`testing`), and keep names **honest** where they don't
+  (net/http has `:json`/`:middleware` — no validation lib, no DI container; Prisma is a
+  data axis: `schema-modeling`/`client-queries`/`relations`/`testing`).
+
 ## Promotion: personal extension → overlay
 | `progress/<track>/extensions.md` | `tracks/<lang>/overlays/<name>.md` |
 |---|---|
