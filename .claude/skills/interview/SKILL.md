@@ -23,6 +23,8 @@ Determine the active track from what the learner just said, else from `progress/
    live-coding solution is written by the candidate (named per the `prompt.md` `solution_file`
    field) and scored by the `grader` agent.
 3. Write `feedback.md` with the debrief (verbal score, coding score, communication,
-   next steps) and update `skills.md` for the assessed concepts.
+   next steps) and update `skills.md` for the assessed concepts. Completing an interview is a
+   **palier point**: you MAY apply the nudge policy (`.claude/nudge.md`) to offer one next step
+   under its guardrail.
 
 **Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.

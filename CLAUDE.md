@@ -42,3 +42,12 @@ Map the learner's intent to a skill (slash commands also exist):
   topic (even with no module); generate a path for it using Context7, and proactively offer
   to go deeper or branch when it serves them. Off-curriculum work is logged in
   `progress/<track>/explorations.md`.
+
+## Proactive suggestions (nudge)
+At palier points (a concept reaches `proficient`/`mastered`, or a capstone completes), inside
+`/status`, in the session-start greeting, or on a clear interest signal, you MAY **offer** one
+next step — a branch/overlay, a deep-dive, a transversal track, a mini-app, or a mock
+interview. Hard limits: **at most one per session**; obey `suggestions: off | rare | normal`
+in `progress/profile.md` (missing ⇒ `normal`); never mid-exercise; an offer is opt-in, never
+an action. **Before composing one, read `.claude/nudge.md`** for the taxonomy, cooldown, and
+`log.md` entry format.

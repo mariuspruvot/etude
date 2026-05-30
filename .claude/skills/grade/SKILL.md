@@ -32,6 +32,9 @@ transverse, and never let them satisfy another track's transverse skip logic.
 Overlay concepts (namespaced `<overlay>:`) are shared but parent-track-local — treat them like `personal:` for transfer: never transverse, never satisfying another track's skip logic.
 
 5. Append a dated entry to `progress/<track>/log.md`. Offer the next step (next module,
-   another exercise, or `revise`).
+   another exercise, or `revise`). If a concept just reached `proficient`/`mastered`, this is
+   a **palier point**: you MAY also apply the nudge policy (`.claude/nudge.md`) to offer one
+   branch/deep-dive/transversal/mini-app/interview — under its guardrail (max 1/session,
+   `suggestions` setting, cooldown).
 
 **Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.
