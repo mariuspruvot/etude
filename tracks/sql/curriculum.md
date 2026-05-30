@@ -10,9 +10,9 @@ concepts:
   language_specific: [joins, aggregation, window-functions]
 ---
 
-# SQL — Curriculum (stub)
+# SQL — Curriculum (review-only)
 
-> Stub track. Exercises are reviewed qualitatively in v1 (no DB execution harness yet);
+> Review-only track. Exercises are reviewed qualitatively (no DB execution harness yet);
 > see roadmap. Mastery is checked by reading the query + explaining the plan.
 
 ## Modules

@@ -63,9 +63,11 @@ Claude is a tutor, not a solver: a hook blocks it from writing your solution fil
 hints are graduated. You write the code; Claude guides and grades.
 
 ## Tracks
-Go and Python are full flagship tracks; TypeScript and SQL are stubs (JavaScript is taught as a subset of TypeScript). A track is a
+Go, Python and TypeScript are full flagship tracks; SQL is a review-only track
+(JavaScript is taught as a subset of TypeScript). A track is a
 programming language or an adjacent technical subject. Adding one = writing a
-`tracks/<track>/curriculum.md` skeleton — contributions welcome.
+`tracks/<track>/curriculum.md` skeleton — contributions welcome. See the **flagship
+bar** under Contributing for what separates a full track from a review-only one.
 
 ## Teaching language
 Étude teaches in your preferred language — say it (or run `/language fr`) and explanations,
@@ -86,6 +88,16 @@ The most-used generated paths can graduate to **curated overlays** shipped in th
 Étude grows by **curriculum** (a full language/tech track) or by **overlay**
 (a framework/library on top of a parent track, e.g. FastAPI on Python). Both go
 through the same loop: open an issue first to discuss scope, then a PR.
+
+**The flagship bar.** A track is **flagship** (vs a review-only track) when it has:
+- ≥ 6 modules spanning tooling → syntax → type system → errors → concurrency/async → testing;
+- a `## Capstones` section (a `mini_app` and an `interview`);
+- `transfer_note` blocks on modules where cross-language transfer applies;
+- and it passes `lint_curriculum.py`.
+
+A **review-only track** (e.g. SQL) has no execution harness yet, so mastery is checked by
+reading the solution and explaining it rather than by running tests. This bar is a human
+review criterion, not a lint rule.
 
 **A new curriculum** (`tracks/<lang>/curriculum.md`):
 - Read an existing track (e.g. `tracks/python/curriculum.md`) — same frontmatter,
@@ -112,5 +124,5 @@ current usage via Context7 at teach-time — don't pin minor versions in
 - `python3` (for the integrity hook — stdlib only, no install).
 - The **toolchain of the track you're learning**, installed and on your `PATH`, so the
   tutor can actually run and grade your code (e.g. `go` for the Go track, a recent Python
-  for Python, `node` for TypeScript). Non-executable tracks (e.g. SQL in v1) are reviewed
+  for Python, `node` for TypeScript). Review-only tracks (e.g. SQL) are reviewed
   qualitatively and need no toolchain.
