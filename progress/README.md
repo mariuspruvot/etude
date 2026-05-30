@@ -24,12 +24,16 @@ known_languages: [python]        # languages the learner has shipped real code i
 goals: "<what the learner wants to achieve>"
 language: en                     # learner's preferred prose language (bcp47); code stays English
 active_track: <track>            # the track currently being learned (e.g. go)
+suggestions: normal              # proactive-nudge frequency: off | rare | normal (missing ⇒ normal)
 created: <YYYY-MM-DD>
 ---
 
 # Profile
 Free-form notes the tutor keeps: strengths, weak spots, preferences (pace, depth).
 ```
+`suggestions` controls proactive nudges (offers to branch, deep-dive, try a transversal track,
+etc.): `normal` = all triggers, `rare` = only after mastering something, `off` = none. See
+`.claude/nudge.md`.
 
 ## Template: `skills.md`
 ```markdown

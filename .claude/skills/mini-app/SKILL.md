@@ -34,5 +34,7 @@ limiter"). Accept it, scope it to their mastered + target concepts, and proceed 
    agent on the exercise folder for a milestone review; give graduated hints, never write
    their code.
 4. On completion, write `feedback.md` and update `skills.md` for the involved concepts.
+   Finishing a mini-app is a **palier point**: you MAY apply the nudge policy
+   (`.claude/nudge.md`) to offer one next step under its guardrail.
 
 **Language:** write prose in the learner's `progress/profile.md` `language`; keep code, identifiers, CLI, and concept tags in English.
