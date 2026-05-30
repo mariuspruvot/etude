@@ -31,6 +31,10 @@ transverse, and never let them satisfy another track's transverse skip logic.
 
 Overlay concepts (namespaced `<overlay>:`) are shared but parent-track-local — treat them like `personal:` for transfer: never transverse, never satisfying another track's skip logic.
 
+Transversal-track concepts (namespaced `<name>:`, e.g. `algorithms:`) are likewise track-local.
+Execute the solution in the language the learner chose (per `prompt.md`'s `solution_file`) and
+record that language in the evidence (e.g. `algorithms/exercises/003 (go)`).
+
 5. Append a dated entry to `progress/<track>/log.md`. Offer the next step (next module,
    another exercise, or `revise`). If a concept just reached `proficient`/`mastered`, this is
    a **palier point**: you MAY also apply the nudge policy (`.claude/nudge.md`) to offer one

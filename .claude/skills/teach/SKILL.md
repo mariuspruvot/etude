@@ -17,6 +17,10 @@ teach/generate from them exactly as from curated modules.
 
 Curated overlays live in `tracks/<track>/overlays/*.md` — if present for the active track, read them too: their modules (`oNN`, concepts namespaced `<overlay>:`) are first-class once their `parent:` prerequisites are met.
 
+For a transversal track (`kind: transversal`, e.g. `algorithms`): teach the concept
+language-agnostically first, then show ONE idiomatic example in the learner's chosen impl
+language (from the track's `languages: [...]`), pulling current stdlib usage via Context7.
+
 1. Read the current module from `tracks/<track>/curriculum.md` (objectives, concepts, resources).
 2. For any library/API/tooling involved, fetch CURRENT usage via Context7 — do not rely on
    recollection. Prefer the `freshness_source` declared in the curriculum frontmatter.

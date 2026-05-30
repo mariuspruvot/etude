@@ -13,7 +13,9 @@ Determine the active track from what the learner just said, else from `progress/
    - per active track: current module, % of modules touched,
    - competency table grouped by level (mastered / proficient / learning / unknown),
    - personal modules (from `extensions.md`) and recent explorations (from `explorations.md`),
-   - curated overlays (from `tracks/<track>/overlays/*.md`) the active track has, if any,
+   - curated overlays (from `tracks/<track>/overlays/*.md`) the active track has, if any
+     (a transversal track such as `algorithms` renders like any track; its `<name>:` concepts
+     are track-local),
    - weak spots (lowest levels) and concepts due for revision (oldest `last_graded`),
    - a suggested next action — here you MAY apply the nudge policy (`.claude/nudge.md`) to
      offer one branch/deep-dive/transversal/mini-app/interview, under its guardrail
