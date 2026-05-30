@@ -1,0 +1,29 @@
+name: CI
+
+# Runs the curriculum/overlay linters and the hook + tool test suites.
+# The whole suite is small and fast, so it runs on every PR and on pushes to main
+# (no path filters). The linters MUST be invoked via `uv run --script` so their
+# PEP 723 inline metadata pulls pyyaml; `uv run python ...` would fail (see tools/CLAUDE.md).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Lint curricula
+        run: uv run --script tools/lint_curriculum.py tracks/*/curriculum.md
+
+      - name: Lint overlays
+        run: uv run --script tools/lint_overlay.py tracks/*/overlays/*.md
+
+      - name: Run tests
+        run: uv run --with pyyaml --with pytest pytest tools/ .claude/hooks/
