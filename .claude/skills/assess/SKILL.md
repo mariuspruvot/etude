@@ -24,8 +24,15 @@ modules are first-class: include them in the proposed path alongside curated mod
 
 Curated overlays live in `tracks/<track>/overlays/*.md` — if present for the active track, read them too: their modules (`oNN`, concepts namespaced `<overlay>:`) are first-class once their `parent:` prerequisites are met.
 
+Transversal tracks (`tracks/<track>/curriculum.md` with `kind: transversal`, e.g. `algorithms`)
+are language-agnostic: there is no syntax module and no transverse-skip to compute — build the
+path from the `tNN` prerequisites. Ask which impl language (from the track's `languages: [...]`)
+the learner will use and record it in the profile notes; their concepts are namespaced `<name>:`
+and track-local.
+
 3. **Syntax never transfers**: always include the track's syntax module (e.g. `go-syntax`,
-   `python-syntax`) unless `skills.md` shows it `proficient` (i.e. they used THIS language before).
+   `python-syntax`) unless `skills.md` shows it `proficient` (i.e. they used THIS language
+   before). Transversal tracks have no syntax module — skip this step for them.
 
 Only curated transverse concepts drive cross-track skipping; `personal:` concepts are
 track-local and never skip another track's modules.

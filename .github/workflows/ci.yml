@@ -19,8 +19,14 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v5
 
-      - name: Lint curricula
-        run: uv run --script tools/lint_curriculum.py tracks/*/curriculum.md
+      # The frozen lint_curriculum.py only understands language tracks; feed it only the
+      # curricula WITHOUT `kind: transversal` (grep -L lists non-matching files).
+      - name: Lint language curricula
+        run: uv run --script tools/lint_curriculum.py $(grep -LE '^kind:[[:space:]]*transversal' tracks/*/curriculum.md)
+
+      # lint_transversal.py self-selects by `kind`, so pointing it at every curriculum is safe.
+      - name: Lint transversal tracks
+        run: uv run --script tools/lint_transversal.py tracks/*/curriculum.md
 
       - name: Lint overlays
         run: uv run --script tools/lint_overlay.py tracks/*/overlays/*.md

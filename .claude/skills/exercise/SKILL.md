@@ -17,6 +17,11 @@ teach/generate from them exactly as from curated modules.
 
 Curated overlays live in `tracks/<track>/overlays/*.md` — if present for the active track, read them too: their modules (`oNN`, concepts namespaced `<overlay>:`) are first-class once their `parent:` prerequisites are met.
 
+For a transversal track (`kind: transversal`, e.g. `algorithms`): seeds come from the `tNN`
+module and concepts are namespaced `<name>:`. Set `solution_file` per the learner's chosen impl
+language (from the track's `languages: [...]`, e.g. `solution.py`) so the grader runs it in that
+language.
+
 1. Pick an `exercise_seed` from the current module (or generate one at the right difficulty
    given `progress/skills.md`). Calibrate: harder if the learner is senior/transferring.
 

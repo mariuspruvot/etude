@@ -85,8 +85,9 @@ The most-used generated paths can graduate to **curated overlays** shipped in th
 `tracks/OVERLAYS.md`. This is the "personal → community" promotion path.
 
 ## Contributing
-Étude grows by **curriculum** (a full language/tech track) or by **overlay**
-(a framework/library on top of a parent track, e.g. FastAPI on Python). Both go
+Étude grows by **curriculum** (a full language/tech track), by **overlay**
+(a framework/library on top of a parent track, e.g. FastAPI on Python), or by **transversal
+track** (a language-agnostic engineering subject, e.g. Algorithms & Data Structures). All go
 through the same loop: open an issue first to discuss scope, then a PR.
 
 **The flagship bar.** A track is **flagship** (vs a review-only track) when it has:
@@ -98,6 +99,14 @@ through the same loop: open an issue first to discuss scope, then a PR.
 A **review-only track** (e.g. SQL) has no execution harness yet, so mastery is checked by
 reading the solution and explaining it rather than by running tests. This bar is a human
 review criterion, not a lint rule.
+
+**The transversal-track bar.** A **transversal track** (`kind: transversal`, e.g. Algorithms &
+Data Structures) teaches a language-agnostic engineering subject. It is *complete* when it has
+≥ 6 `tNN` modules covering the subject's core spine, a `## Capstones` section, and lints clean
+under `lint_transversal.py`. It declares `languages: [...]` (the impl languages a learner may
+pick); the grader runs the learner's solution in their chosen one. Concepts are namespaced
+`<name>:` and track-local. This bar is a human criterion, distinct from the (syntax/tooling-
+shaped) flagship bar above.
 
 **A new curriculum** (`tracks/<lang>/curriculum.md`):
 - Read an existing track (e.g. `tracks/python/curriculum.md`) — same frontmatter,
@@ -114,6 +123,14 @@ review criterion, not a lint rule.
   `requires_parent`) or an **earlier** `oNN` module in the same file.
 - If a learner already has the topic as a `personal:` extension in their
   `progress/<track>/extensions.md`, follow the promotion path in `OVERLAYS.md`.
+
+**A new transversal track** (`tracks/<name>/curriculum.md` with `kind: transversal`):
+- Read `tracks/algorithms/curriculum.md` as the reference. Frontmatter: `kind: transversal`,
+  `name`, `display_name`, `languages: [...]`, and `concepts.transversal` (every id namespaced
+  `<name>:`). No `transverse`/`language_specific` blocks, no syntax module.
+- Modules are `tNN`; prereqs reference an **earlier** `tNN` (document order ⇒ acyclic).
+- Lint locally: `uv run --script tools/lint_transversal.py tracks/<name>/curriculum.md`
+  (it self-selects by `kind`, so it is safe to point at every `tracks/*/curriculum.md`).
 
 Resources must be official docs (project site, language reference). Étude pulls
 current usage via Context7 at teach-time — don't pin minor versions in
